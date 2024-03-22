@@ -1,10 +1,5 @@
-<h1>
-    <slot></slot>
-</h1>
+<script lang="ts">
+export let left: boolean = false;
+</script>
 
-<style>
-    h1 {
-        font-size: large;
-        color: black;
-    }
-</style>
+<h1 style={left ? "text-aling: left" : null}><slot /></h1>
