@@ -8,5 +8,4 @@ Cliente Web para a plataforma Pelada Score
 
 ## Tecnologias Usadas
 
-- [Astro](https://astro.build)
-- [Svelte](https://svelte.dev)
+- [Svelte e SvelteKit](https://svelte.dev)
