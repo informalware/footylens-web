@@ -11,7 +11,7 @@
 	:root {
 		font-family: sans-serif;
 		font-size: 14px;
-		background-color: rgb(32, 32, 32);
 		color: whitesmoke;
+		min-height: 100%;
 	}
 </style>

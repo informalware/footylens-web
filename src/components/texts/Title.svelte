@@ -3,3 +3,11 @@ export let left: boolean = false;
 </script>
 
 <h1 style={left ? "text-aling: left" : null}><slot /></h1>
+
+<style>
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        background-color: transparent;
+    }
+</style>
