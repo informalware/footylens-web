@@ -23,6 +23,6 @@
         flex-direction: row;
         gap: 2rem;
         padding: 1rem;
-        background-color: gray;
+        background-color: hsl(var(--accent));
     }
 </style>
