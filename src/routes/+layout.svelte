@@ -1,6 +1,6 @@
 <script lang="ts">
 	import '../app.pcss';
-	import Header from '../components/containers/Header.svelte';
+	import Header from '$lib/components/containers/header.svelte';
 </script>
 
 <Header></Header>
