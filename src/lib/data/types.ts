@@ -31,9 +31,11 @@ interface User {
     id: number;
 
     name: string;
+    bio: string;
     at: string;
     email: string;
     
     team: Team;
     friends: string[];
+    following: number;
 }
