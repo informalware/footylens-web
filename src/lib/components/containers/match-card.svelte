@@ -1,7 +1,7 @@
 <script lang="ts">
     import { onMount } from 'svelte';
     import * as Card from "$lib/components/ui/card";
-	import type { Match } from "$lib/mocks/matches";
+	import type { Match } from "$lib/data/types";
 	import { millisToString } from "$lib/str_utils";
 	import { AlarmClock, AlarmMinus, X } from "lucide-svelte";
     import SingleScore from "$lib/components/containers/scoreboard/singlescore.svelte";
