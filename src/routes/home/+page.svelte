@@ -1,16 +1,19 @@
 <script lang="ts">
-    import Match from "$lib/components/containers/feed-match.svelte";
-    import { data as matches } from "$lib/mocks/matches";
+    import Match from "$components/containers/match-card.svelte";
+	import MatchFeed from "$components/containers/match-feed.svelte";
+    import { data as matches } from "$lib/data/mocks/matches";
+
+    let i: number = 0;
 </script>
 
 <!--
 Página home do site onde o usuário poderá ver o seu feed
 -->
 
-<div class="gap-4 flex flex-col items-center ">
-    {#each matches as match}
-    <div style="width: 32rem;">
-        <Match match={match} />
-    </div>
-    {/each}
-</div>
+<MatchFeed loader={async () => {
+    if (i >= matches.length) throw new Error("No more matches");
+
+    const value = matches[i];
+    i++;
+    return value;
+}}/>
