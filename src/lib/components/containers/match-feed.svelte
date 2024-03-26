@@ -1,8 +1,9 @@
 <script lang="ts">
 	import Button from "$components/ui/button/button.svelte";
-import type { Match } from "$lib/data/types";
+    import type { Match } from "$lib/data/types";
 	import MatchCard from "./match-card.svelte";
 	import { onMount } from "svelte";
+    import "../../../app.pcss";
 
     export let loader: () => Promise<Match>;
     let loading = false;
@@ -39,7 +40,7 @@ Componente de feed de partidas. Carrega novas entradas sempre que o botão for p
 -->
 
 
-<div class="gap-4 flex flex-col items-center content">
+<div class="gap-4 flex flex-col items-center pad-sm">
 {#each matches as match}
     <MatchCard match={match} />
 {/each}
@@ -48,9 +49,3 @@ Componente de feed de partidas. Carrega novas entradas sempre que o botão for p
 {#if loading}
 <p>LOADING...</p>
 {/if}
-
-<style>
-    .content {
-        padding: 1rem;
-    }
-</style>
