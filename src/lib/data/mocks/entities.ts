@@ -1,30 +1,24 @@
-import type { Entity } from "../types";
+import type { User } from "../types";
 
-const data: Entity[] = [
+const data: User[] = [
     {
-        type: "profile",
         id: "ojarrisonn_",
         display: "Harrisonn"
     }, {
-        type: "profile",
         id: "yamal",
         display: "Lamine Yamal"
     }, {
-        type: "profile",
         id: "duvanel",
         display: "T.Duvanel"
     }, {
-        type: "team",
-        id: "crfftm",
-        display: "Flamengo de FTM"
+        id: "rossman",
+        display: "Lais Nuto (Taylor's Version)"
     }, {
-        type: "team",
-        id: "flupi",
-        display: "Fluminense - PI"
+        id: "tokokunawara",
+        display: "Tokokunawara"
     }, {
-        type: "championship",
-        id: "pistoncup",
-        display: "Copa Pistão"
+        id: "leomessi",
+        display: "Lionel Messi"
     }
 ];
 
