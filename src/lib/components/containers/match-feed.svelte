@@ -37,7 +37,11 @@ import type { Match } from "$lib/data/types";
 @component
 Componente de feed de partidas. Carrega novas entradas sempre que o botão for pressionado (WIP)
 
+<<<<<<< HEAD
 - `loader`: callback que retorna um objeto `Match` indicando como carregar a próxima partida
+=======
+- `loader`: callback que diz como carregar o próximo elemento
+>>>>>>> f68f705 (Created match feed with load more button)
 
 -->
 
