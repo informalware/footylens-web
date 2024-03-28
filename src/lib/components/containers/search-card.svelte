@@ -1,17 +1,17 @@
 <script lang="ts">
 	import CardHeader from './../ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
-    import type { Entity } from "$lib/data/types";
+    import type { User } from "$lib/data/types";
 	import CardTitle from '$components/ui/card/card-title.svelte';
 	import CardDescription from '$components/ui/card/card-description.svelte';
-	import { Shield, Trophy, User } from 'lucide-svelte';
+	import { User as UserIcon } from 'lucide-svelte';
     import "../../../app.pcss";
     import { goto } from '$app/navigation';
 
-    export let entity: Entity;
+    export let user: User;
 
     function navigateToEntity() {
-        goto(`/${entity.type}/${entity.id}`);
+        goto(`/profile/${user.id}`);
     }
 </script>
 
@@ -20,16 +20,10 @@
     <Card>
         <CardHeader>
             <div class="flex flex-row gap-4">
-                {#if entity.type === "profile"}
-                <User />
-                {:else if entity.type === "team"}
-                <Shield />
-                {:else}
-                <Trophy />
-                {/if}
+                <UserIcon />
                 <div>
-                    <CardTitle>{entity.display}</CardTitle>
-                    <CardDescription>@{entity.id}</CardDescription>
+                    <CardTitle>{user.display}</CardTitle>
+                    <CardDescription>@{user.id}</CardDescription>
                 </div>
             </div>
         </CardHeader>

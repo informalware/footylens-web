@@ -1,11 +1,11 @@
 <script lang="ts">
-	import { type Entity } from './../../lib/data/types';
+	import { type User } from './../../lib/data/types';
 	import SearchCard from './../../lib/components/containers/search-card.svelte';
     import entities from "$lib/data/mocks/entities";
 	import Input from '$components/ui/input/input.svelte';
 
     let term: string;
-    let results: Entity[] = [];
+    let results: User[] = [];
 
     // Mock search function
     // The search should be done in the server
@@ -31,6 +31,6 @@
         <Input on:keyup={search} bind:value={term} placeholder="Busque pessoas, times ou campeonatos"/>
     </div>
     {#each results as result (result.id)}
-    <SearchCard entity={result} />
+    <SearchCard user={result} />
     {/each}
 </div>
