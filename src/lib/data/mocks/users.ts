@@ -1,6 +1,10 @@
 import type { User } from "../types";
 
-const data: User[] = [
+export function getUser(id: string): User {
+    return users.filter(value => value.id === id)[0];
+}
+
+export const users: User[] = [
     {
         id: "ojarrisonn_",
         display: "Harrisonn"
@@ -21,5 +25,3 @@ const data: User[] = [
         display: "Lionel Messi"
     }
 ];
-
-export default data;

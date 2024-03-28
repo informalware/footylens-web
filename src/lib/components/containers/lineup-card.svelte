@@ -28,6 +28,9 @@
                     <CardTitle>
                         {user.display}
                         <div class="inline-flex flex-row">
+                            {#if stats.keeper}
+                            <Icon icon="zondicons:hand-stop" />
+                            {/if}
                             {#if stats.red_card}
                             <Icon icon="mdi:card" color="red" />
                             {/if}
