@@ -1,7 +1,7 @@
 <script lang="ts">
-	import { type User } from './../../lib/data/types';
-	import SearchCard from './../../lib/components/containers/search-card.svelte';
-    import entities from "$lib/data/mocks/entities";
+	import type { User } from './../../lib/data/types';
+	import SearchCard from './../../lib/components/search-card.svelte';
+    import { users } from "$lib/data/mocks/users";
 	import Input from '$components/ui/input/input.svelte';
 
     let term: string;
@@ -13,8 +13,8 @@
         if (!term) 
             results = [];
         else 
-            results = entities.filter(
-                value => 
+            results = users.filter(
+                (value: User) => 
                     value.id
                         .toLocaleLowerCase()
                         .includes(term.toLocaleLowerCase()) 

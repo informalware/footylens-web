@@ -1,11 +1,11 @@
 <script lang="ts">
-	import CardHeader from './../ui/card/card-header.svelte';
+	import CardHeader from './ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
     import type { User } from "$lib/data/types";
 	import CardTitle from '$components/ui/card/card-title.svelte';
 	import CardDescription from '$components/ui/card/card-description.svelte';
 	import { User as UserIcon } from 'lucide-svelte';
-    import "../../../app.pcss";
+    import "../../app.pcss";
     import { goto } from '$app/navigation';
 
     export let user: User;

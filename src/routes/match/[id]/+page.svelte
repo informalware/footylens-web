@@ -1,31 +1,41 @@
 <script lang="ts">
-	import type { Match } from './../../../lib/data/types.ts';
-	import LineupCard from "$components/containers/lineup-card.svelte";
-	import { getUser } from '$lib/data/mocks/users.js';
+	import Timer from '$lib/components/scoreboard/timer.svelte';
+	import { page } from "$app/stores";
+	import type { Match } from './../../../lib/data/types';
+	import PlayerCard from "$components/scoreboard/player-card.svelte";
 	import { getMatch } from '$lib/data/mocks/matches.js';
+	import TeamGoalsDisplay from '$components/scoreboard/team-goals-display.svelte';
 
-    export let data;
-    let match: Match = getMatch(Number(data.id));
+    let match: Match = getMatch(Number($page.params.id));
 </script>
 
+<!--
+@component
 
-<h1 class="text-center text-6xl">Partida<br>{match.home.name} x {match.visitor.name}</h1>
+Página para exibição de dados de uma partida especificada pela rota dinâmica `/match/[id]`
 
-<div class="grid grid-cols-2 gap-8">
+-->
+<div class="text-center">
+	<Timer initial={match.started_at.getTime()} finished={match.finished?.getTime()} huge/>
+</div>
+
+<div class="grid grid-cols-2 gap-8" style="padding: 2rem;">
 	<div class="place-self-end">
-		<p class="text-5xl text-right">{match.home.goals}</p>
+		<TeamGoalsDisplay team={match.home} huge/>
+		
 		<div class="flex flex-col gap-4">
-			{#each match.home.squad as player}
-			<LineupCard user={player.user} stats={player.stats}/>
+			{#each match.home.squad.sort((a, b) => Number(b.stats.keeper) - Number(a.stats.keeper)) as player}
+			<PlayerCard player={player}/>
 			{/each}
 		</div>
 	</div>
 	
-	<div>
-		<p class="text-5xl">{match.visitor.goals}</p>
+	<div class="place-self-start">		
+		<TeamGoalsDisplay team={match.visitor} huge/>
+
 		<div class="flex flex-col gap-4">	
-			{#each match.visitor.squad as player}
-			<LineupCard user={player.user} stats={player.stats}/>
+			{#each match.visitor.squad.sort((a, b) => Number(b.stats.keeper) - Number(a.stats.keeper)) as player}
+			<PlayerCard player={player}/>
 			{/each}
 		</div>
 	</div>
