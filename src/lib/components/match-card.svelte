@@ -17,6 +17,8 @@ Card usado para representar uma partida no feed do usuário. O card deve conter 
 - Tempo decorrido/fim de jogo
 - Times e placar
 - Estatísticas dos seus amigos
+
+-`match: Match` partida com as informações a serem exibidas
 -->
 
 <Card.Root>

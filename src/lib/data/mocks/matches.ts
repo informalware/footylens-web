@@ -28,6 +28,11 @@ const hospital1: Team = {
     ]
 }
 
+/**
+ * Obtem uma partida da lista de partidas mockadas
+ * @param id id da partida
+ * @returns a partida (ou undefined se o id não tiver sido definido)
+ */
 export function getMatch(id: number): Match {
     return matches.filter(match => match.id === id)[0];
 }

@@ -1,3 +1,6 @@
+/**
+ * Objeto com dados de uma partida
+ */
 export type Match = {
     id: number, 
     home: Team, 
@@ -7,25 +10,33 @@ export type Match = {
 }
 
 /**
- * Representa uma entidade, seja usuário, equipe ou campeonato. 
- * Guarda apenas os dados necessários, demais informações devem ser solicitadas ao back-end sob demanda
+ * Guarda dados de usuário que permitam ele a ser
  */
 export type User = {
     id: string
     display: string
 }
 
+/**
+ * Equipe (basicamente a lista de jogadores) de uma partida
+ */
 export type Team = {
     name: string,
     goals: number,
     squad: Player[]
 }
 
+/**
+ * Jogador, junção de um usuário com suas estatísticas de jogo
+ */
 export type Player = {
     user: User,
     stats: MatchStats
 }
 
+/**
+ * Estatísticas de partida para um jogador
+ */
 export type MatchStats = {
     goals: number,
     assists: number | undefined,

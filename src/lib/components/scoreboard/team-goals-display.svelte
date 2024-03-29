@@ -10,6 +10,7 @@
 
 Elemento do scoreboard que exibe nome da equipe e os gols marcados
 - `team: Team`: equipe
+- `huge: boolean`: modifica a exibição para ficar maior
 -->
 
 <div class="justify-center items-center text-center" style="{huge ? 'padding: 2rem' : ''}">

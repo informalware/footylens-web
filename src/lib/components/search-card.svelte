@@ -15,6 +15,15 @@
     }
 </script>
 
+<!--
+@component
+
+Elemento a ser exibido na tela de busca para mostrar informações sobre um usuário e permitindo o acesso ao perfil do mesmo
+
+- `user: User`: usuário cujas informações serão exibidos
+
+-->
+
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="w-96" on:click={navigateToEntity} on:keydown={navigateToEntity}>
     <Card>

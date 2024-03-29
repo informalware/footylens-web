@@ -24,6 +24,7 @@
 
 Exibe informações sobre um jogador específico em um cartão a ser usado em telas de partida
 
+- `player: Player`: o jogador cujas informações serão exibidas
 -->
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
