@@ -3,8 +3,8 @@
 
     import profile from '$assets/bh.png';
     import team_img from '$assets/flamengo.png'
-    import Match from "$lib/components/containers/feed-match.svelte";
-    import { matches as matches } from "$lib/mocks/matches";
+    import Match from "$components/containers/match-card.svelte";
+    import { data as matches } from "$lib/data/mocks/matches";
 </script>
 
 <!--
