@@ -1,7 +1,7 @@
 <script lang="ts">
-	import CardHeader from './../ui/card/card-header.svelte';
+	import CardHeader from '$components/ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
-    import type { MatchStats, User } from "$lib/data/types";
+    import type { Player } from "$lib/data/types";
 	import CardTitle from '$components/ui/card/card-title.svelte';
 	import CardDescription from '$components/ui/card/card-description.svelte';
 	import { User as UserIcon } from 'lucide-svelte';
@@ -10,13 +10,22 @@
     import CardContent from '$components/ui/card/card-content.svelte';
     import Icon from '@iconify/svelte';
 
-    export let user: User;
-    export let stats: MatchStats;
+    export let player: Player;
+    $: user = player.user;
+    $: stats = player.stats;
 
     function navigateToProfile() {
-        goto(`/profile/${user.id}`);
+        goto(`/profile/${player.user.id}`);
     }
 </script>
+
+<!--
+@component
+
+Exibe informações sobre um jogador específico em um cartão a ser usado em telas de partida
+
+- `player: Player`: o jogador cujas informações serão exibidas
+-->
 
 <!-- svelte-ignore a11y-no-static-element-interactions -->
 <div class="w-96" on:click={navigateToProfile} on:keydown={navigateToProfile}>

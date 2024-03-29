@@ -1,7 +1,6 @@
 <script lang="ts">
-    import Match from "$components/containers/match-card.svelte";
-	import MatchFeed from "$components/containers/match-feed.svelte";
-    import { data as matches } from "$lib/data/mocks/matches";
+    import MatchFeed from "$components/match-feed.svelte";
+    import { matches } from "$lib/data/mocks/matches";
 
     let i: number = 0;
 </script>

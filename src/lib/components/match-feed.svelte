@@ -3,7 +3,7 @@
     import type { Match } from "$lib/data/types";
 	import MatchCard from "./match-card.svelte";
 	import { onMount } from "svelte";
-    import "../../../app.pcss";
+    import "../../app.pcss";
 
     export let loader: () => Promise<Match>;
     let loading = false;
