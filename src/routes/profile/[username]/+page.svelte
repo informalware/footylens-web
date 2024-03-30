@@ -1,41 +1,60 @@
-<script lang="ts">
-    export let data: User;
-
+<script>
     import profile from '$assets/bh.png';
     import team_img from '$assets/flamengo.png'
-    import Match from "$components/containers/match-card.svelte";
+
+    import Match from "$lib/components/containers/match-card.svelte";
+    import MatchFeed from "$components/containers/match-feed.svelte";
     import { data as matches } from "$lib/data/mocks/matches";
+
+    import { data } from "$lib/data/mocks/profiles";
+    import { page } from "$app/stores";
+
+    function findUser(name) {
+        return data.find((user) => user.at === name);
+    }
+
+    let user = findUser($page.params.username);
+
+    let i = 0;
 </script>
+
 
 <!--
     Página do perfil do usuário
+
+    -> Necessário linkar partidas apenas que usuário participou;
+    -> Necessário linkar amigos do usuário;
 -->
 
 <main>
     <div class="profile-header">
         <img class="profile-header" src={profile} alt="Imagem do Usuário" />
-        <h1>{data.name}</h1>
-        <h2>{data.at}</h2>
-        <p>{data.bio}</p>
+        <h1>{user.name}</h1>
+        <h2>@{user.at}</h2>
+        <p>{user.bio}</p>
         <div class="peladeiros">
-            <span>{data.following}</span>
+            <span>{user.following}</span>
             <span>Peladeiros</span>
         </div>
         <div class="peladeiros">
-            <span>{data.team}</span>
-            <img class="team" src={team_img} alt={data.team.name} />
+            <span>{user.team.name}</span>
+            <img class="team" src={team_img} alt={user.team} />
         </div>
         <div>
-            <button class="addButton">Adicionar Amigo</button>
+            <button class="Button">Adicionar Amigo</button>
         </div>
     </div>
     <div class="gap-4 flex flex-col items-center last-matches">
         <h1>Últimas Partidas</h1>
-        {#each matches as match}
-        <div style="width: 32rem;">
-            <Match match={match} />
-        </div>
-        {/each}
+
+        <MatchFeed loader={async () => {
+            if (i >= matches.length) throw new Error("No more matches");
+        
+            const value = matches[i];
+            i++;
+            return value;
+        }}/>
+        
     </div>
 </main>
 
@@ -90,7 +109,7 @@
         margin-bottom: 20px;
     }
     
-    .addButton {
+    .Button {
         background-color: #1e3147;
         color: white;
         padding: 8px 16px;
@@ -100,7 +119,7 @@
         cursor: pointer;
     }
 
-    .addButton:hover {
+    .Button:hover {
         background-color: #0d2035;
     }
 

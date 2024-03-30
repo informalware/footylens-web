@@ -1,7 +1,5 @@
 <script lang="ts">
-	import { type Entity } from './../../lib/data/types';
 	import SearchCard from './../../lib/components/containers/search-card.svelte';
-    import entities from "$lib/data/mocks/entities";
 	import Input from '$components/ui/input/input.svelte';
 
     let term: string;
