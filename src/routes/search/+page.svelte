@@ -31,6 +31,6 @@
         <Input on:keyup={search} bind:value={term} placeholder="Busque pessoas, times ou campeonatos"/>
     </div>
     {#each results as result (result.id)}
-    <SearchCard user={result} />
+        <SearchCard user={result} />
     {/each}
 </div>

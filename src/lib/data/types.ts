@@ -1,4 +1,20 @@
 /**
+ * Guarda dados de usuário que permitam ele a ser
+ */
+interface User {
+    id: number;
+
+    name: string;
+    bio: string;
+    at: string;
+    email: string;
+    
+    team: Team;
+    friends: string[];
+    following: number;
+}
+
+/**
  * Objeto com dados de uma partida
  */
 export type Match = {
@@ -7,14 +23,6 @@ export type Match = {
     visitor: Team, 
     started_at: Date,
     finished: Date | undefined
-}
-
-/**
- * Guarda dados de usuário que permitam ele a ser
- */
-export type User = {
-    id: string
-    display: string
 }
 
 /**
