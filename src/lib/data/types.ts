@@ -1,32 +1,6 @@
-
-interface Team {
-    id: number;
-
-    name: string;
-}
-
-interface Match {
-    id: number;
-    duration: number;
-
-    team1: Team;
-    team2: Team;
-
-    score1: number;
-    score2: number;
-
-    date: Date;
-    location: string;
-}
-
-interface Tournament {
-    matches: Match[];
-
-    teams: Team[];
-    places: Team[];
-}
-
-
+/**
+ * Guarda dados de usuário que permitam ele a ser
+ */
 interface User {
     id: number;
 
@@ -39,3 +13,43 @@ interface User {
     friends: string[];
     following: number;
 }
+
+/**
+ * Objeto com dados de uma partida
+ */
+export type Match = {
+    id: number, 
+    home: Team, 
+    visitor: Team, 
+    started_at: Date,
+    finished: Date | undefined
+}
+
+/**
+ * Equipe (basicamente a lista de jogadores) de uma partida
+ */
+export type Team = {
+    name: string,
+    goals: number,
+    squad: Player[]
+}
+
+/**
+ * Jogador, junção de um usuário com suas estatísticas de jogo
+ */
+export type Player = {
+    user: User,
+    stats: MatchStats
+}
+
+/**
+ * Estatísticas de partida para um jogador
+ */
+export type MatchStats = {
+    goals: number,
+    assists: number | undefined,
+    keeper: boolean | undefined
+    yellow_cards: 0 | 1 | 2 | undefined,
+    red_card: boolean | undefined,
+    injury: boolean | undefined
+};

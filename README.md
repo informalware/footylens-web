@@ -13,3 +13,4 @@ Cliente Web para a plataforma Pelada Score
 - [TailwindCSS](https://tailwindcss.com/): framework de CSS
 - [shadcn-svelte](https://www.shadcn-svelte.com/): coleção de componentes Svelte reutilizáveis
 - [Lucide](https://lucide.dev/): biblioteca de icones
+- [Iconify](https://iconify.design/): framework de icones (alternativa ao lucide)
