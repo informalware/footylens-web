@@ -2,9 +2,8 @@
     import profile from '$assets/bh.png';
     import team_img from '$assets/flamengo.png'
 
-    import Match from "$lib/components/containers/match-card.svelte";
-    import MatchFeed from "$components/containers/match-feed.svelte";
-    import { data as matches } from "$lib/data/mocks/matches";
+    import MatchFeed from "$components/match-feed.svelte";
+    import { matches } from "$lib/data/mocks/matches";
 
     import { data } from "$lib/data/mocks/profiles";
     import { page } from "$app/stores";

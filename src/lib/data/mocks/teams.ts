@@ -2,13 +2,15 @@ import type {Team} from "../types";
 
 export const data: Team[] = [
     {
-        type: "team",
-        id: "crfftm",
-        name: "Flamengo de FTM"
+        id: 0,
+        name: "Flamengo de FTM",
+        goals: 0,
+        squad: []
     }, 
     {
-        type: "team",
-        id: "flupi",
-        name: "Fluminense - PI"
+        id: 1,
+        name: "Fluminense - PI",
+        goals: 0,
+        squad: []
     }
 ]

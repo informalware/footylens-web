@@ -7,10 +7,9 @@ interface User {
     name: string;
     bio: string;
     at: string;
-    email: string;
     
     team: Team;
-    friends: string[];
+    friends: number[];
     following: number;
 }
 
@@ -19,6 +18,7 @@ interface User {
  */
 export type Match = {
     id: number, 
+    
     home: Team, 
     visitor: Team, 
     started_at: Date,
@@ -29,6 +29,7 @@ export type Match = {
  * Equipe (basicamente a lista de jogadores) de uma partida
  */
 export type Team = {
+    id: number,
     name: string,
     goals: number,
     squad: Player[]
