@@ -1,6 +1,6 @@
-# Pelada Score Web
+# FootyLens Web
 
-Cliente Web para a plataforma Pelada Score
+Cliente Web para a plataforma FootyLens
 
 ## Dependências
 
