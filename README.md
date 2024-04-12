@@ -1,6 +1,6 @@
 # FootyLens Web
 
-Cliente Web para a plataforma FootyLens
+Cliente Web para a plataforma [FootyLens](https://github.com/informalware/footylens)
 
 ## Dependências
 
