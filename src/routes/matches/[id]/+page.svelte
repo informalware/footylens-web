@@ -1,7 +1,7 @@
 <script lang="ts">
 	import Timer from '$lib/components/scoreboard/timer.svelte';
 	import { page } from "$app/stores";
-	import type { Match } from './../../../lib/data/types';
+	import type { Match } from '../../../lib/data/types';
 	import PlayerCard from "$components/scoreboard/player-card.svelte";
 	import { getMatch } from '$lib/data/mocks/matches.js';
 	import TeamGoalsDisplay from '$components/scoreboard/team-goals-display.svelte';

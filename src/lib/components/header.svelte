@@ -5,7 +5,7 @@
 
     import "/src/app.pcss";
 
-    const pages: string[] = ['home', 'profile', 'search']
+    const pages: string[] = ['Partidas', 'Usuários', 'Busca']
 </script>
 
 <!--
@@ -15,7 +15,7 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
 -->
 
 <header class="">
-    <Title>Pelada Score</Title>
+    <Title>FootyLens</Title>
     
     {#each pages as page}
     <Button href="/{page}" variant="secondary">{ToTitle(page)}</Button>
