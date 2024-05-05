@@ -1,7 +1,5 @@
 import type { User } from "../types";
 
-import { data as teams } from "$lib/data/mocks/teams"
-
 export const data: User[] = [
     {
         id: 1,
@@ -9,9 +7,6 @@ export const data: User[] = [
         bio: "Calvo",
         at: "th-duvanel",
         email: "thiago.duvanel@usp.br",
-        
-        team: teams[0],
-        following: 10
     },
     {
         id: 2,
@@ -19,8 +14,6 @@ export const data: User[] = [
         bio: "Lorem ipsum",
         at: "john-doe",
         email: "john.doe@example.com",
-        team: teams[1],
-        following: 5
     },
     {
         id: 3,
@@ -28,8 +21,6 @@ export const data: User[] = [
         bio: "Dolor sit amet",
         at: "jane-smith",
         email: "jane.smith@example.com",
-        team: teams[2],
-        following: 8
     },
     {
         id: 4,
@@ -37,8 +28,6 @@ export const data: User[] = [
         bio: "Consectetur adipiscing elit",
         at: "alex-johnson",
         email: "alex.johnson@example.com",
-        team: teams[0],
-        following: 12
     },
     {
         id: 5,
@@ -46,7 +35,5 @@ export const data: User[] = [
         bio: "ah n sei oq n sei q la",
         at: "ojarrisonn",
         email: "ojarrisonn@gmail.com",
-        team: teams[0],
-        following: 6969
     }
 ]

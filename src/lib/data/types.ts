@@ -1,16 +1,13 @@
 /**
  * Guarda dados de usuário que permitam ele a ser
  */
-interface User {
+export type User = {
     id: number;
 
     name: string;
     bio: string;
     at: string;
-    
-    team: Team;
-    friends: number[];
-    following: number;
+    email: string;
 }
 
 /**
