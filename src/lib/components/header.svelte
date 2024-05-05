@@ -5,7 +5,11 @@
 
     import "/src/app.pcss";
 
-    const pages: string[] = ['Partidas', 'Usuários', 'Busca']
+    const pages = [
+        { page: 'matches', button: 'Partidas' },
+        { page: 'users', button: 'Usuários' },
+        { page: 'search', button: 'Pesquisar' }
+    ];
 </script>
 
 <!--
@@ -15,10 +19,12 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
 -->
 
 <header class="">
-    <Title>FootyLens</Title>
-    
-    {#each pages as page}
-    <Button href="/{page}" variant="secondary">{ToTitle(page)}</Button>
+    <a href="/home">
+        <Title>FootyLens</Title>
+    </a>
+
+    {#each pages as { page, button }}
+    <Button href="/{page}" variant="secondary">{button}</Button>
     {/each}
 </header>
 
