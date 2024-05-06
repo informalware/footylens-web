@@ -28,8 +28,7 @@ export type Match = {
 export type Team = {
     id: number,
     name: string,
-    goals: number,
-    squad: Player[]
+    league: string
 }
 
 /**
