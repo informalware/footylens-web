@@ -24,6 +24,10 @@
         <Input bind:value={term} placeholder="Busque pessoas, times ou campeonatos"/>
     </div>
     {#if term}
-        <p>Text</p>
+        {#await search() then result}
+            <p>Result: {result}</p>
+        {:catch err}
+            <p>Failed to make request due to {err}</p>
+        {/await}
     {/if}
 </div>
