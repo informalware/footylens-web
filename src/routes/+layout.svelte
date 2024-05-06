@@ -6,8 +6,13 @@
 </script>
 
 <Header />
-<UserAside user={ UserMock[1] }/>
-<slot />
+
+<div class="body-layout">
+    <UserAside user={ UserMock[1] }/>
+	<main>
+		<slot />
+	</main>
+</div>
 
 <style>
 	:root {
@@ -16,4 +21,15 @@
 		color: whitesmoke;
 		min-height: 100%;
 	}
+
+    .body-layout {
+        display: flex;
+        flex-direction: row;
+        min-height: 100vh; /* Adjust as needed */
+    }
+
+    main {
+        flex-grow: 1;
+		padding: 2rem;
+    }
 </style>
