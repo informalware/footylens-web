@@ -5,13 +5,23 @@
 	import CardTitle from '$components/ui/card/card-title.svelte';
 	import CardDescription from '$components/ui/card/card-description.svelte';
 	import { User as UserIcon } from 'lucide-svelte';
-    import "../../app.pcss";
+    import "../../../app.pcss";
     import { goto } from '$app/navigation';
+	import axios from 'axios';
+	import { backend_address } from '$lib/consts';
+	import { error } from '@sveltejs/kit';
 
-    export let user: User;
+    export let userid: number;
+    let user: User;
 
     function navigateToUserProfile() {
-        goto(`/users/@${user.at}`);
+        goto(`/users/@${user.username}`);
+    }
+
+    async function getUser(id: number) {
+        const req = await axios.get(backend_address + `/users/${id}`);
+
+        user = req.data
     }
 </script>
 
@@ -20,10 +30,14 @@
         <CardHeader>
             <div class="flex flex-row gap-4">
                 <UserIcon />
-                <div>
-                    <CardTitle>{user.name}</CardTitle>
-                    <CardDescription>@{user.id}</CardDescription>
-                </div>
+                {#await getUser(userid)}
+                    <p>Loading...</p>    
+                {:then _dc}                 
+                    <div>
+                        <CardTitle>{user.display}</CardTitle>
+                        <CardDescription>@{user.username}</CardDescription>
+                    </div>
+                {/await}
             </div>
         </CardHeader>
     </Card>
