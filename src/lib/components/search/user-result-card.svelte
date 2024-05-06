@@ -1,5 +1,5 @@
 <script lang="ts">
-	import CardHeader from './ui/card/card-header.svelte';
+	import CardHeader from '../ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
     import type { User } from "$lib/data/types";
 	import CardTitle from '$components/ui/card/card-title.svelte';
@@ -10,31 +10,26 @@
 
     export let user: User;
 
-    function navigateToEntity() {
-        goto(`/profile/${user.id}`);
+    function navigateToUserProfile() {
+        goto(`/users/@${user.at}`);
     }
 </script>
 
-<!--
-@component
-
-Elemento a ser exibido na tela de busca para mostrar informações sobre um usuário e permitindo o acesso ao perfil do mesmo
-
-- `user: User`: usuário cujas informações serão exibidos
-
--->
-
-<!-- svelte-ignore a11y-no-static-element-interactions -->
-<div class="w-96" on:click={navigateToEntity} on:keydown={navigateToEntity}>
+<div class="w-96" role="button" tabindex="0" aria-label="View user profile" on:click={navigateToUserProfile} on:keydown={navigateToUserProfile}>
     <Card>
         <CardHeader>
             <div class="flex flex-row gap-4">
                 <UserIcon />
                 <div>
-                    <CardTitle>{user.display}</CardTitle>
+                    <CardTitle>{user.name}</CardTitle>
                     <CardDescription>@{user.id}</CardDescription>
                 </div>
             </div>
         </CardHeader>
     </Card>
 </div>
+
+
+<style>
+
+</style>
