@@ -61,6 +61,15 @@ export type Review = {
     lastModifiedDate: string | undefined
 }
 
+export type Commentary = {
+    id: number,
+    reviewId: number,
+    userId: number,
+    commentary: string,
+    creationDate: string | undefined,
+    lastModifiedDate: string | undefined
+}
+
 export enum Rating {
     TERRIBLE,
     BAD,
