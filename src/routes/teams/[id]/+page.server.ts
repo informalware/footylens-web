@@ -1,3 +1,3 @@
 export function load({params}) {
-    return params.id;
+    return params;
 }

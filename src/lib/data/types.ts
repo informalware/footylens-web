@@ -31,25 +31,6 @@ export type Team = {
     league: string
 }
 
-/**
- * Jogador, junção de um usuário com suas estatísticas de jogo
- */
-export type Player = {
-    user: User,
-    stats: MatchStats
-}
-
-/**
- * Estatísticas de partida para um jogador
- */
-export type MatchStats = {
-    goals: number,
-    assists: number | undefined,
-    keeper: boolean | undefined
-    yellow_cards: 0 | 1 | 2 | undefined,
-    red_card: boolean | undefined,
-    injury: boolean | undefined
-};
 
 export type Review = {
     id: number, 
