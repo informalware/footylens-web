@@ -50,3 +50,21 @@ export type MatchStats = {
     red_card: boolean | undefined,
     injury: boolean | undefined
 };
+
+export type Review = {
+    id: number, 
+    matchId: number,
+    userId: number,
+    rating: Rating,
+    review: string,
+    creationDate: string | undefined,
+    lastModifiedDate: string | undefined
+}
+
+export enum Rating {
+    TERRIBLE,
+    BAD,
+    OK,
+    GOOD,
+    AMAZING
+}
