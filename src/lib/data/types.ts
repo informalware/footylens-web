@@ -4,9 +4,9 @@
 export type User = {
     id: number;
 
-    name: string;
+    display: string;
     bio: string;
-    at: string;
+    username: string;
     email: string;
 }
 
@@ -28,8 +28,7 @@ export type Match = {
 export type Team = {
     id: number,
     name: string,
-    goals: number,
-    squad: Player[]
+    league: string
 }
 
 /**
