@@ -1,36 +1,29 @@
 <script lang="ts">
+    import axios from 'axios';
 	import type { User } from './../../lib/data/types';
-	import SearchCard from './../../lib/components/search-card.svelte';
-    import { users } from "$lib/data/mocks/users";
-	import Input from '$components/ui/input/input.svelte';
+    import Input from '$components/ui/input/input.svelte';
+	import { backend_address } from '$lib/consts';
 
     let term: string;
-    let results: User[] = [];
 
     // Mock search function
     // The search should be done in the server
     async function search() {
-        if (!term) 
-            results = [];
-        else 
-            results = users.filter(
-                (value: User) => 
-                    value.id
-                        .toLocaleLowerCase()
-                        .includes(term.toLocaleLowerCase()) 
-                ||  value.display
-                        .toLocaleLowerCase()
-                        .includes(term.toLocaleLowerCase()));
+        return axios.get(backend_address + `/search`, {
+            data: {
+                term: term
+            }
+        })
     }
 </script>
 
-
+<h1 class="font-bold text-4xl text-center"> Searching </h1>
 
 <div class="gap-4 flex flex-col items-center pad-sm">
     <div class="w-96">
-        <Input on:keyup={search} bind:value={term} placeholder="Busque pessoas, times ou campeonatos"/>
+        <Input bind:value={term} placeholder="Busque pessoas, times ou campeonatos"/>
     </div>
-    {#each results as result (result.id)}
-        <SearchCard user={result} />
-    {/each}
+    {#if term}
+        <p>Text</p>
+    {/if}
 </div>
