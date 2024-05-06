@@ -26,23 +26,6 @@
 -->
 
 <main>
-    <div class="profile-header">
-        <img class="profile-header" src={profile} alt="Imagem do Usuário" />
-        <h1>{user.name}</h1>
-        <h2>@{user.at}</h2>
-        <p>{user.bio}</p>
-        <div class="peladeiros">
-            <span>{user.following}</span>
-            <span>Peladeiros</span>
-        </div>
-        <div class="peladeiros">
-            <span>{user.team.name}</span>
-            <img class="team" src={team_img} alt={user.team} />
-        </div>
-        <div>
-            <button class="Button">Adicionar Amigo</button>
-        </div>
-    </div>
     <div class="gap-4 flex flex-col items-center last-matches">
         <h1>Últimas Partidas</h1>
 
