@@ -5,6 +5,7 @@
 	import type { User } from './../../lib/data/types';
     import Input from '$components/ui/input/input.svelte';
 	import { backend_address } from '$lib/consts';
+	import Title from '$components/texts/title.svelte';
 
     let term: string;
 
@@ -17,7 +18,7 @@
     }
 </script>
 
-<h1 class="font-bold text-4xl text-center">Buscar</h1>
+<Title>Buscar</Title>
 
 <div class="gap-4 flex flex-col items-center pad-sm">
     <div class="w-96">
@@ -25,13 +26,13 @@
     </div>
     {#if term}
         {#await search(term) then result}
-            <h1 class="font-bold text-4xl text-center">Usuários</h1>
+            <Title>Usuários</Title>
             {#each result.data.users as user}
                 <UserResultCard userid={user} />
             {:else}
                 <p>Nenhum usuário encontrado</p>
             {/each}
-            <h1 class="font-bold text-4xl text-center">Times</h1>
+            <Title>Times</Title>
             {#each result.data.teams as team}
                 <TeamResultCard teamid={team} />
             {:else}
