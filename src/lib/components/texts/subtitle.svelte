@@ -6,7 +6,7 @@
 
 <style>
     h2 {
-        font-size: 2rem;
+        font-size: 1.5rem;
         font-weight: bold;
         background-color: transparent;
     }
