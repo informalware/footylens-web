@@ -75,5 +75,15 @@ export enum Rating {
     BAD,
     OK,
     GOOD,
-    AMAZING
+    AMAZING,
+}
+
+export function rating_as_number(rating: Rating): number {
+    const str = rating.toString();
+    if (str == "TERRIBLE") return 1;
+    if (str == "BAD") return 2;
+    if (str == "OK") return 3;
+    if (str == "GOOD") return 4;
+    if (str == "AMAZING") return 5;
+    return 0;
 }
