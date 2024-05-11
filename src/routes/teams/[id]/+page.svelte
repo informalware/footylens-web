@@ -17,6 +17,7 @@
         <Shield size={128}/>
         <h1>
             {team.name}
+            <button class="Button">Seguir time</button>
             <h2>
                 {team.league}
             </h2>
@@ -68,5 +69,24 @@
         font-size: 0.45em;
         font-weight: bold;
     
+    }
+
+    .Button {
+        background-color: hsl(var(--accent));
+        color: white;
+        padding: 8px 16px;
+        border: none;
+        border-radius: 4px;
+        font-size: 16px;
+        cursor: pointer;
+
+        position: relative;
+        top: -0.25em;
+        margin-left: 2em;
+        margin-bottom: 1em;
+    }
+
+    .Button:hover {
+        background-color: #0d2035;
     }
 </style>
