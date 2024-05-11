@@ -5,7 +5,6 @@
     import MatchCard from '$lib/components/match-card.svelte';
 
     import { req_team, req_team_matches, req_match, req_team_followers } from '$lib/requests';
-
     import { page } from '$app/stores';
 
     let id = Number($page.params.id)
@@ -93,3 +92,20 @@
         background-color: #0d2035;
     }
 </style>
+
+
+<div class="text-center">
+	<Timer initial={match.started_at.getTime()} finished={match.finished?.getTime()} huge/>
+</div>
+
+<div class="grid grid-cols-2 gap-8" style="padding: 2rem;">
+	<div class="place-self-end">
+		<TeamGoalsDisplay team={match.home} huge/>
+
+	</div>
+	
+	<div class="place-self-start">		
+		<TeamGoalsDisplay team={match.visitor} huge/>
+
+	</div>
+</div>

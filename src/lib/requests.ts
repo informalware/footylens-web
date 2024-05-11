@@ -51,3 +51,9 @@ export async function req_match(id: number): Promise<Match> {
 
     return {...res.data}
 }
+
+export async function req_match_review(id: number): Promise<{reviews: number[]}>{
+    const res = await axios.get(backend_address + `/matches/${id}/reviews`);
+
+    return {...res.data}
+}

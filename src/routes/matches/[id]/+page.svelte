@@ -1,12 +1,13 @@
 <script lang="ts">
 	import Timer from '$lib/components/scoreboard/timer.svelte';
 	import { page } from "$app/stores";
-	import type { Match } from '../../../lib/data/types';
-	import PlayerCard from "$components/scoreboard/player-card.svelte";
-	import { getMatch } from '$lib/data/mocks/matches.js';
 	import TeamGoalsDisplay from '$components/scoreboard/team-goals-display.svelte';
+    
+	import AuthorDisplay from '$components/review/author-display.svelte';
+    import RatingDisplay from '$components/review/rating-display.svelte';
+    import { req_review, req_match_review, req_match } from '$lib/requests';
 
-    let match: Match = getMatch(Number($page.params.id));
+    let id = Number($page.params.id)
 </script>
 
 <!--
@@ -15,28 +16,46 @@
 Página para exibição de dados de uma partida especificada pela rota dinâmica `/match/[id]`
 
 -->
-<div class="text-center">
-	<Timer initial={match.started_at.getTime()} finished={match.finished?.getTime()} huge/>
-</div>
+{#await req_match(id) then match}
+    <div class="match-block">
+        <TeamGoalsDisplay match={match}/>
 
-<div class="grid grid-cols-2 gap-8" style="padding: 2rem;">
-	<div class="place-self-end">
-		<TeamGoalsDisplay team={match.home} huge/>
-		
-		<div class="flex flex-col gap-4">
-			{#each match.home.squad.sort((a, b) => Number(b.stats.keeper) - Number(a.stats.keeper)) as player}
-			<PlayerCard player={player}/>
-			{/each}
-		</div>
-	</div>
-	
-	<div class="place-self-start">		
-		<TeamGoalsDisplay team={match.visitor} huge/>
+        {#await req_match_review(id) then review_list}
+        {#each review_list.reviews as rid}
+        {#await req_review(rid) then review}
+        <div class="review-container">
+            <AuthorDisplay id={review.userId} date={review.creationDate} />
+            <p>{review.review}</p>
+            <RatingDisplay rating={review.rating} />
+        </div>
+        {/await}
+        {/each}
+        {/await}
+    </div>
+{/await}
 
-		<div class="flex flex-col gap-4">	
-			{#each match.visitor.squad.sort((a, b) => Number(b.stats.keeper) - Number(a.stats.keeper)) as player}
-			<PlayerCard player={player}/>
-			{/each}
-		</div>
-	</div>
-</div>
+<style>
+    .match-block {
+        width: 100%;
+        max-width: 500px;
+    }
+
+    .home {
+        place-self: end;
+        border-radius: 50px;
+        background-color: hsl(var(--accent));
+    }
+
+    .away {
+        place-self: start;
+        border-radius: 50px;
+        background-color: hsl(var(--accent));
+    }
+</style>
+
+
+<!--
+            <a href="">
+                <TeamGoalsDisplay team={match.visitor} huge/>
+            </a>
+-->

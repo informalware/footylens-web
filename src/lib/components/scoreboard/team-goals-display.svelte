@@ -1,19 +1,57 @@
 <script lang="ts">
-	import type { Team } from "$lib/data/types";
+	import type { Match, Team } from "$lib/data/types";
+    import { Shield } from "lucide-svelte";
 
-    export let team: Team;
-    export let huge: boolean = false;
+    import { req_team } from "$lib/requests";
+
+    export let match: Match;
 </script>
 
-<!--
-@component
 
-Elemento do scoreboard que exibe nome da equipe e os gols marcados
-- `team: Team`: equipe
-- `huge: boolean`: modifica a exibição para ficar maior
--->
+<div class="grid grid-cols-2 gap-20">
+    <div class="home">
+        <Shield size={128}/>
 
-<div class="justify-center items-center text-center" style="{huge ? 'padding: 2rem' : ''}">
-    <p class="text-{huge ? 4 : 2}xl font-medium" style="margin-bottom: 1rem">{team.name}</p>
-    <p class="text-{huge ? 6 : 4}xl font-black">{team.goals}</p>
+        {#await req_team(match.homeId) then team}
+        <a href={`/teams/${team.id}`}>
+            <p class="name">{team.name}</p>
+        </a>
+        {/await}
+
+        <p class="goals">{match.scoreboard[0]}</p>
+    </div>
+    <div class="away">
+        <Shield size={128}/>
+
+        {#await req_team(match.visitorId) then team}
+        <a href={`/teams/${team.id}`}>
+            <p class="name">{team.name}</p>
+        </a>
+        {/await}
+
+        <p class="goals">{match.scoreboard[1]}</p>
+    </div>
 </div>
+
+
+<style>
+    div {
+        text-align: center;
+        padding: 2rem;
+    }
+
+    .goals {
+        font-size: 30px;
+    }
+
+    .name {
+        font-size: 20px; 
+        margin-top: 1rem; 
+        margin-bottom: 1rem
+    }
+
+    .shield {
+        width: 128px;
+        height: 128px;
+    }
+</style>

@@ -16,10 +16,9 @@ export type User = {
 export type Match = {
     id: number, 
     
-    home: Team, 
-    visitor: Team, 
-    started_at: Date,
-    finished: Date | undefined
+    homeId: number, 
+    visitorId: number, 
+    scoreboard: [number, number]
 }
 
 /**
