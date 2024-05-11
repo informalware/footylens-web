@@ -10,15 +10,20 @@ export type User = {
     email: string;
 }
 
+export type Scoreboard = {
+    first: number,
+    second: number
+}
+
 /**
  * Objeto com dados de uma partida
  */
 export type Match = {
     id: number, 
     
-    homeId: number, 
-    visitorId: number, 
-    scoreboard: [number, number]
+    home: number, 
+    away: number, 
+    scoreboard: Scoreboard
 }
 
 /**

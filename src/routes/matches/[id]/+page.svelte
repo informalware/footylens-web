@@ -40,22 +40,9 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         max-width: 500px;
     }
 
-    .home {
-        place-self: end;
-        border-radius: 50px;
-        background-color: hsl(var(--accent));
-    }
-
-    .away {
-        place-self: start;
-        border-radius: 50px;
-        background-color: hsl(var(--accent));
+    .review-container {
+        margin-top: 1rem;
+        padding: 1rem;
+        border: 1px solid hsl(0, 0%, 80%);
     }
 </style>
-
-
-<!--
-            <a href="">
-                <TeamGoalsDisplay team={match.visitor} huge/>
-            </a>
--->
