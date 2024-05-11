@@ -28,26 +28,43 @@ export type Match = {
 export type Team = {
     id: number,
     name: string,
-    goals: number,
-    squad: Player[]
+    league: string
 }
 
-/**
- * Jogador, junção de um usuário com suas estatísticas de jogo
- */
-export type Player = {
-    user: User,
-    stats: MatchStats
+
+export type Review = {
+    id: number, 
+    matchId: number,
+    userId: number,
+    rating: Rating,
+    review: string,
+    creationDate: string | undefined,
+    lastModifiedDate: string | undefined
 }
 
-/**
- * Estatísticas de partida para um jogador
- */
-export type MatchStats = {
-    goals: number,
-    assists: number | undefined,
-    keeper: boolean | undefined
-    yellow_cards: 0 | 1 | 2 | undefined,
-    red_card: boolean | undefined,
-    injury: boolean | undefined
-};
+export type Commentary = {
+    id: number,
+    reviewId: number,
+    userId: number,
+    commentary: string,
+    creationDate: string | undefined,
+    lastModifiedDate: string | undefined
+}
+
+export enum Rating {
+    TERRIBLE,
+    BAD,
+    OK,
+    GOOD,
+    AMAZING,
+}
+
+export function rating_as_number(rating: Rating): number {
+    const str = rating.toString();
+    if (str == "TERRIBLE") return 1;
+    if (str == "BAD") return 2;
+    if (str == "OK") return 3;
+    if (str == "GOOD") return 4;
+    if (str == "AMAZING") return 5;
+    return 0;
+}

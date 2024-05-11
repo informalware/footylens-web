@@ -1,18 +1,18 @@
 <script>
     import team_img from '$assets/flamengo.png'
     import { Shield } from "lucide-svelte";
-    import { data as Teams } from '$lib/data/mocks/teams.ts';
 
     import MatchCard from '$lib/components/match-card.svelte';
-    import { matches } from '$lib/data/mocks/matches.ts';
+
+    import { req_team, req_team_matches, req_match, req_team_followers } from '$lib/requests';
 
     import { page } from '$app/stores';
 
-    let team = Teams[Number($page.params.id)];
+    let id = Number($page.params.id)
 </script>
 
 
-<main>
+{#await req_team(id) then team}
     <div class="team-header">
         <Shield size={128}/>
         <h1>
@@ -23,22 +23,25 @@
             </h2>
             <h3>
                 Seguidores: 
+                {#await req_team_followers(id) then followers}
+                    {followers.followers.length}
+                {/await}
             </h3>
         </h1>
     </div>
     <div class="team-matches">
-        {#each matches as match}
-            <MatchCard match={match}/>
+        {#await req_team_matches(id) then match_list}
+        {#each match_list.matches as mid}
+        {#await req_match(mid) then match}
+        <MatchCard {match}/>
+        {/await}
         {/each}
+        {/await}
     </div>
-</main>
+{/await}
 
 
 <style>
-    main {
-        align-items: left;
-    }
-
     .team-header {
         display: flex;
         align-items: center;
