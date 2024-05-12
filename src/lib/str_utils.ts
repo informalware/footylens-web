@@ -30,3 +30,9 @@ export function millisToString(millis: number, force: boolean = false): string {
     mins %= 60;
     return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 }
+
+export function stringToDate(source: string | undefined): string | undefined {
+    if (source === undefined) return undefined;
+    const date = new Date(source);
+    return `${date.getDate().toString().padStart(2, '0')}/${(date.getMonth()+1).toString().padStart(2, '0')}/${date.getFullYear()}`
+}

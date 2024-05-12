@@ -1,13 +1,7 @@
 <script lang="ts">
     import profile from '$assets/bh.png';
-    import team_img from '$assets/flamengo.png'
 
     import type { User } from "$lib/data/types";
-    import MatchFeed from "$components/match-feed.svelte";
-    import { matches } from "$lib/data/mocks/matches";
-
-    import { data } from "$lib/data/mocks/profiles";
-    import { page } from "$app/stores";
 
     export let user: User;
 </script>
@@ -18,34 +12,39 @@
     <div class="image-container">
         <img class="profile-image" src={profile} alt="Imagem do Usuário" />
     </div>
-    <h1>{user.name}</h1>
-    <h2>@{user.at}</h2>
+    <h1>{user.display}</h1>
+    <h2>@{user.username}</h2>
     <p>{user.bio}</p>
     <div class="peladeiros">
-        <span>Peladeiros</span>
+        <span>Seguidores</span>
     </div>
     <div class="peladeiros">
+        <span>Seguindo</span>
     </div>
     <div>
-        <button class="Button">Adicionar Amigo</button>
+        <button class="Button">Editar perfil</button>
     </div>
 </div>
 
 <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
     .profile-header {
         display: flex;
         flex-direction: column;
-        align-items: left;
+        align-items: flex-start;
         text-align: left;
 
         padding: 2.5%;
-        display: flex;
-        justify-content: left;
-        align-items: left;
-        height: 100vh;
-        min-width: 300px;
-        max-width: 15vw;
-        
+        min-width: 250px;
+        max-width: 16vw;
         background-color: hsl(var(--accent));
     }
 

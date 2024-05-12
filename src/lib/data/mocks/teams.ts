@@ -9,6 +9,16 @@ export const data: Team[] = [
     {
         id: 2,
         name: "Manchester City",
-        league: "Premier League"
+        league: "Premier League",
+    },
+    {
+        id: 0,
+        name: "Flamengo",
+        league: "Brasileirao"
+    }, 
+    {
+        id: 1,
+        name: "Fluminense",
+        league: "Brasileirao"
     }
 ]
