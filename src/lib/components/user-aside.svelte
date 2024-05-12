@@ -1,6 +1,5 @@
 <script lang="ts">
-    import profile from '$assets/bh.png';
-
+    import profile from '$assets/logo.png';
     import type { User } from "$lib/data/types";
 
     export let user: User;
@@ -16,10 +15,10 @@
     <h2>@{user.username}</h2>
     <p>{user.bio}</p>
     <div class="peladeiros">
-        <span>Seguidores</span>
+        <span>Seguidores:</span>
     </div>
     <div class="peladeiros">
-        <span>Seguindo</span>
+        <span>Seguindo:</span>
     </div>
     <div>
         <button class="Button">Editar perfil</button>
@@ -53,10 +52,8 @@
     }
 
     .profile-image {
-        width: 200px;
-        height: 200px;
-        border-radius: 50%;
         margin-bottom: 20px;
+        margin-right: 20px;
     }
 
     h1 {

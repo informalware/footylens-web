@@ -15,6 +15,32 @@ export type Scoreboard = {
     second: number
 }
 
+export enum EventTypes {
+    YELLOW, 
+    RED, 
+    GOAL, 
+    PENALTY
+}
+
+export function event_as_number(eventtype: EventTypes): number {
+    const str = eventtype.toString();
+    if (str == "YELLOW") return 1;
+    if (str == "RED") return 2;
+    if (str == "GOAL") return 3;
+    if (str == "PENALTY") return 4;
+    return 0;
+}
+
+export type Event = {
+    id: number,
+
+    event: EventTypes,
+    moment: number,
+    player: string,
+    matchId: number,
+    teamId: number
+}
+
 /**
  * Objeto com dados de uma partida
  */
