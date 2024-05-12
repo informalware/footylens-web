@@ -16,6 +16,7 @@
 Página para exibição de dados de uma partida especificada pela rota dinâmica `/match/[id]`
 
 -->
+
 {#await req_match(id) then match}
     <div class="match-block">
         <div class="gols">
@@ -28,11 +29,8 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         </div>
 
         <div class="reviews-box">
-        <h1 class="title"> Reviews desta partida 
-            <TextBox />
-        </h1>
         {#await req_match_review(id) then review_list}
-        {#each review_list.reviews as rid}
+        {#each review_list.reviews.slice(-3) as rid}
         {#await req_review(rid) then review}
         <div class="review-container">
             <AuthorDisplay id={review.userId} date={review.creationDate} />
@@ -42,6 +40,9 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         {/await}
         {/each}
         {/await}
+        <h1 class="title">Poste sua FootyReview dessa partida: 
+            <TextBox />
+        </h1>
         </div>
     </div>
 {/await}
@@ -85,6 +86,7 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
     .title {
         font-size: 1.5rem;
         font-weight: bold;
+        margin-top: 2rem;
     }
 
     @media (max-width: 1024px) {

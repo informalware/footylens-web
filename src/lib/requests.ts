@@ -28,6 +28,18 @@ export async function req_user(id: number): Promise<User> {
     return {...res.data}
 }
 
+export async function req_user_reviews(id: number): Promise<{reviews: number[]}> {
+    const res = await axios.get(backend_address + `/users/${id}/reviews`);
+
+    return {...res.data}
+}
+
+export async function req_user_commentaries(id: number): Promise<{commentaries: number[]}> {
+    const res = await axios.get(backend_address + `/users/${id}/commentaries`);
+
+    return {...res.data}
+}
+
 export async function req_team(id: number): Promise<Team> {
     const res = await axios.get(backend_address + `/teams/${id}`);
 
@@ -60,6 +72,24 @@ export async function req_match_review(id: number): Promise<{reviews: number[]}>
 
 export async function req_match_events(id: number): Promise<{events: Event[]}>{
     const res = await axios.get(backend_address + `/matches/${id}/details`);
+
+    return {...res.data}
+}
+
+export async function req_user_followers(id: number): Promise<{followers: number[]}>{
+    const res = await axios.get(backend_address + `/users/${id}/followers`);
+
+    return {...res.data}
+}
+
+export async function req_user_follows(id: number): Promise<{follows: number[]}>{
+    const res = await axios.get(backend_address + `/users/${id}/follows`);
+
+    return {...res.data}
+}
+
+export async function req_user_team_follows(id: number): Promise<{teams: number[]}>{
+    const res = await axios.get(backend_address + `/users/${id}/teams`);
 
     return {...res.data}
 }
