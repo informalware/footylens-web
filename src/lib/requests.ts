@@ -1,7 +1,7 @@
 import axios from "axios";
 import { backend_address } from "./consts";
 import type { Commentary, Review } from "./data/types";
-import type { Team, Match } from "./data/types";
+import type { Team, Match, Event } from "./data/types";
 import type { User } from "lucide-svelte";
 
 export async function req_commentary(id: number): Promise<Commentary> {
@@ -54,6 +54,12 @@ export async function req_match(id: number): Promise<Match> {
 
 export async function req_match_review(id: number): Promise<{reviews: number[]}>{
     const res = await axios.get(backend_address + `/matches/${id}/reviews`);
+
+    return {...res.data}
+}
+
+export async function req_match_events(id: number): Promise<{events: Event[]}>{
+    const res = await axios.get(backend_address + `/matches/${id}/details`);
 
     return {...res.data}
 }

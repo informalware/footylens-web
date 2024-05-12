@@ -59,13 +59,13 @@
 
     .home {
         place-self: end;
-        border-radius: 50px;
+        border-radius: 25px;
         background-color: hsl(var(--accent));
     }
 
     .away {
         place-self: start;
-        border-radius: 50px;
+        border-radius: 25px;
         background-color: hsl(var(--accent));
     }
 </style>
