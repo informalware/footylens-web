@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Title from "$lib/components/texts/title.svelte";
 	import Button from "$lib/components/ui/button/button.svelte";
+    import logo from '$assets/nome_branco.png'
     import { ToTitle } from "$lib/str_utils";
 
     import "/src/app.pcss";
@@ -20,11 +21,11 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
 
 <header class="">
     <a href="/home">
-        <Title>FootyLens</Title>
+        <img src={logo}>
     </a>
 
     {#each pages as { page, button }}
-    <Button href="/{page}" variant="secondary">{button}</Button>
+    <Button href="/{page}" variant="secondary" size="lg" class="big-bold">{button}</Button>
     {/each}
 </header>
 
@@ -36,5 +37,10 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
         gap: 2rem;
         padding: 1rem;
         background-color: hsl(var(--accent));
+        align-items: center;
+    }
+
+    img {
+        width: 22rem;
     }
 </style>

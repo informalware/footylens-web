@@ -22,30 +22,35 @@
     <h2>@{user.at}</h2>
     <p>{user.bio}</p>
     <div class="peladeiros">
-        <span>Peladeiros</span>
+        <span>Seguidores</span>
     </div>
     <div class="peladeiros">
+        <span>Seguindo</span>
     </div>
     <div>
-        <button class="Button">Adicionar Amigo</button>
+        <button class="Button">Editar perfil</button>
     </div>
 </div>
 
 <style>
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        padding: 0;
+    }
+
     .profile-header {
         display: flex;
         flex-direction: column;
-        align-items: left;
+        align-items: flex-start;
         text-align: left;
 
         padding: 2.5%;
-        display: flex;
-        justify-content: left;
-        align-items: left;
-        height: 100vh;
-        min-width: 300px;
-        max-width: 15vw;
-        
+        min-width: 250px;
+        max-width: 16vw;
         background-color: hsl(var(--accent));
     }
 
