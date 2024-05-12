@@ -1,23 +1,31 @@
 <script lang="ts">
+	import TextBox from './../../../lib/components/review/text-box.svelte';
+	import MatchScoreboard from '$components/scoreboard/team-goals-display.svelte';
 	import Subtitle from '$lib/components/texts/subtitle.svelte';
 	import { page } from '$app/stores';
 	import RatingDisplay from '$components/review/rating-display.svelte';
 	import AuthorDisplay from '$components/review/author-display.svelte';
 	import CommentaryCard from '$components/review/commentary-card.svelte';
-	import { req_review, req_user, req_commentaries_from_review } from '$lib/requests';
+	import { req_review, req_match, req_commentaries_from_review } from '$lib/requests';
 
     let id = Number($page.params.id)
 </script>
 
 {#await req_review(id) then review}
-    <p>Partida: {review.matchId}</p>
+    {#await req_match(review.matchId) then match} 
+    <div class="flex justify-center">        
+        <div style="max-width: 500px; flex: 1 1 500px;">
+            <MatchScoreboard match={match} />
+        </div>
+    </div>
+    {/await}
     
     <div class="review-container">
         <AuthorDisplay id={review.userId} date={review.creationDate} />
         <p>{review.review}</p>
         <RatingDisplay rating={review.rating} />
     </div>
-    
+    <TextBox />
     <Subtitle left>Comentários</Subtitle>
     <div class="comments-container">
         {#await req_commentaries_from_review(review.id) then comment_list}

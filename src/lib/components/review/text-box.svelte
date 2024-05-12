@@ -1,18 +1,28 @@
 <script lang="ts">
-	import { page } from "$app/stores";
-	import TeamGoalsDisplay from '$components/scoreboard/team-goals-display.svelte';
-    
-	import AuthorDisplay from '$components/review/author-display.svelte';
-    import EventCard from '$components/scoreboard/event-card.svelte';
-    import RatingDisplay from '$components/review/rating-display.svelte';
-    import { req_review, req_match_review, req_match } from '$lib/requests';
-    import { writable } from 'svelte/store';
+	import Button from "$components/ui/button/button.svelte";
+	import { backend_address } from "$lib/consts";
 
-    let id = Number($page.params.id)
+
 </script>
 
 
-<form action="/post-review" method="post">
+<form action={"/reviews"} method="POST">
     <textarea class="review" name="review" required></textarea>
-    <button class="submit">Postar</button>
+    <Button variant="secondary" type="submit" class="self-start">Publicar</Button>
 </form>
+
+<style>
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        margin: 1rem;
+    }
+    
+    textarea {
+        width: 100%;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        background-color: hsl(var(--accent));
+    }
+</style>
