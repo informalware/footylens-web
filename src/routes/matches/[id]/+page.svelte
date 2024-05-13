@@ -29,20 +29,19 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         </div>
 
         <div class="reviews-box">
-        {#await req_match_review(id) then review_list}
-        {#each review_list.reviews.slice(-3) as rid}
-        {#await req_review(rid) then review}
-        <div class="review-container">
-            <AuthorDisplay id={review.userId} date={review.creationDate} />
-            <p>{review.review}</p>
-            <RatingDisplay rating={review.rating} />
-        </div>
-        {/await}
-        {/each}
-        {/await}
-        <h1 class="title">Poste sua FootyReview dessa partida: 
+            <h1 class="title">Poste sua FootyReview dessa partida: </h1>
             <TextBox />
-        </h1>
+            {#await req_match_review(id) then review_list}
+            {#each review_list.reviews.slice(-3) as rid}
+            {#await req_review(rid) then review}
+            <div class="review-container">
+                <AuthorDisplay id={review.userId} date={review.creationDate} />
+                <p>{review.review}</p>
+                <RatingDisplay rating={review.rating} />
+            </div>
+            {/await}
+            {/each}
+            {/await}
         </div>
     </div>
 {/await}
@@ -53,6 +52,7 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         max-width: 1200px;
 
         flex-wrap: wrap;

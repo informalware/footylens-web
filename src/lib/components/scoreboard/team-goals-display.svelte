@@ -1,5 +1,5 @@
 <script lang="ts">
-	import type { Match, Team } from "$lib/data/types";
+	import type { Match } from "$lib/data/types";
     import { Shield } from "lucide-svelte";
 
     import { req_team } from "$lib/requests";
@@ -8,7 +8,7 @@
 </script>
 
 
-<div class="grid grid-cols-2 gap-20">
+<div class="flex flex-row flex-nowrap items-start justify-center gap-20">
     <div class="home">
         <Shield size={128}/>
 
@@ -52,19 +52,12 @@
         display: inline-block;
     }
 
-    .shield {
-        width: 128px;
-        height: 128px;
-    }
-
     .home {
-        place-self: end;
         border-radius: 25px;
         background-color: hsl(var(--accent));
     }
 
     .away {
-        place-self: start;
         border-radius: 25px;
         background-color: hsl(var(--accent));
     }

@@ -1,5 +1,4 @@
 <script>
-    import team_img from '$assets/flamengo.png'
     import { Shield } from "lucide-svelte";
 
     import MatchCard from '$lib/components/match-card.svelte';

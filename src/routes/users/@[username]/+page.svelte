@@ -1,20 +1,5 @@
 <script>
-    import profile from '$assets/bh.png';
-    import team_img from '$assets/flamengo.png'
-
-    import MatchFeed from "$components/match-feed.svelte";
-    import { matches } from "$lib/data/mocks/matches";
-
-    import { data } from "$lib/data/mocks/profiles";
-    import { page } from "$app/stores";
-
-    function findUser(name) {
-        return data.find((user) => user.at === name);
-    }
-
-    let user = findUser($page.params.username);
-
-    let i = 0;
+    
 </script>
 
 
@@ -27,15 +12,7 @@
 
 <main>
     <div class="gap-4 flex flex-col items-center last-matches">
-        <h1>Últimas Partidas</h1>
-
-        <MatchFeed loader={async () => {
-            if (i >= matches.length) throw new Error("No more matches");
-        
-            const value = matches[i];
-            i++;
-            return value;
-        }}/>
+        <h1>Últimas Reviews</h1>
         
     </div>
 </main>
