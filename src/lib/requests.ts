@@ -4,6 +4,7 @@ import type { Commentary, Review } from "./data/types";
 import type { Team, Match, Event } from "./data/types";
 import type { User } from "lucide-svelte";
 
+
 export async function req_commentary(id: number): Promise<Commentary> {
     const res = await axios.get(backend_address + `/commentaries/${id}`);
 
@@ -93,3 +94,4 @@ export async function req_user_team_follows(id: number): Promise<{teams: number[
 
     return {...res.data}
 }
+
