@@ -1,4 +1,3 @@
-import { goto } from "$app/navigation";
 import { backend_address } from "$lib/consts";
 import { redirect, type Actions } from "@sveltejs/kit";
 import axios from "axios";
