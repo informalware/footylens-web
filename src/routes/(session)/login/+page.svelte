@@ -1,21 +1,30 @@
 <script lang="ts">
     import { backend_address } from "$lib/consts";
-    
+    import { enhance } from '$app/forms';
+    import type { ActionData } from './$types';
 
-
+    export let form: ActionData;
 </script>
-  
-<form action="{backend_address}/login" method="POST" class="login-form">
-    <h2>Login</h2>
-    <label for="email">Email:</label>
-    <input id="email" type="email" name="email" required />
-    <label for="password">Senha:</label>
-    <input id="password" type="password" name="password" required />
-    <button type="submit">Login</button>
-    <a href="/signin">
-        <button>Criar conta</button>
-    </a>
-</form>
+
+<section>
+    <form action="{backend_address}/login" method="POST" class="login-form" use:enhance>
+        <h2>Login</h2>
+        <label for="email">Email:</label>
+        <input id="email" type="email" name="email" required />
+        <label for="password">Senha:</label>
+        <input id="password" type="password" name="password" required />
+        <button type="submit">Login</button>
+        <a href="/signin">
+            <button>Criar conta</button>
+        </a>
+    </form>
+
+    {#if form?.error}
+      <div class="notice error">
+        {form.error}
+      </div>
+    {/if}
+</section>
 
 
 <style>
