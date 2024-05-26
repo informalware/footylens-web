@@ -89,7 +89,7 @@ export async function req_user_follows(id: number): Promise<{follows: number[]}>
     return {...res.data}
 }
 
-export async function req_user_team_follows(id: number): Promise<{teams: number[]}>{
+export async function req_user_team_follows(id: number): Promise<{follows: number[]}>{
     const res = await axios.get(backend_address + `/users/${id}/teams`);
 
     return {...res.data}

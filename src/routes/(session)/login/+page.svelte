@@ -7,7 +7,7 @@
 </script>
 
 <section>
-    <form action="{backend_address}/login" method="POST" class="login-form" use:enhance>
+    <form method="POST" class="login-form" use:enhance>
         <h2>Login</h2>
         <label for="email">Email:</label>
         <input id="email" type="email" name="email" required />

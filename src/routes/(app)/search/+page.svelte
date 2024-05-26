@@ -1,6 +1,6 @@
 <script lang="ts">
-	import TeamResultCard from './../../lib/components/search/team-result-card.svelte';
-	import UserResultCard from './../../lib/components/search/user-result-card.svelte';
+	import TeamResultCard from '$components/search/team-result-card.svelte';
+	import UserResultCard from '$components/search/user-result-card.svelte';
     import axios from 'axios';
     import Input from '$components/ui/input/input.svelte';
 	import { backend_address } from '$lib/consts';

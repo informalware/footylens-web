@@ -1,18 +1,10 @@
-<script>
-    import profile from '$assets/bh.png';
-    import team_img from '$assets/flamengo.png'
-
+<script lang="ts">
     import MatchFeed from "$components/match-feed.svelte";
     import { matches } from "$lib/data/mocks/matches";
 
-    import { data } from "$lib/data/mocks/profiles";
-    import { page } from "$app/stores";
+	import type { User } from '$lib/data/types';
 
-    function findUser(name) {
-        return data.find((user) => user.at === name);
-    }
-
-    let user = findUser("ojarrisonn");
+    let user: User | undefined;
 
     let i = 0;
 </script>
@@ -27,17 +19,14 @@
 
 <main>
     <div class="profile-header">
-        <img class="profile-header" src={profile} alt="Imagem do Usuário" />
-        <h1>{user.name}</h1>
-        <h2>@{user.at}</h2>
-        <p>{user.bio}</p>
+        <h1>{user?.display}</h1>
+        <h2>@{user?.username}</h2>
+        <p>{user?.bio}</p>
         <div class="peladeiros">
-            <span>{user.following}</span>
             <span>Peladeiros</span>
         </div>
         <div class="peladeiros">
-            <span>{user.team.name}</span>
-            <img class="team" src={team_img} alt={user.team} />
+            
         </div>
         <div>
             <a href="/profile/customize" target="_self">

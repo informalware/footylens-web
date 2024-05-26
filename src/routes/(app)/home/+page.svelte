@@ -19,16 +19,16 @@
 <div class="feed-box">
     <div class="matches-box">
         {#await req_user_team_follows(id) then teams}
-        <h1 class="second"> Partidas de times que você segue: </h1>
-        {#each teams.teams as tid}
-        {#await req_team_matches(tid) then matches}
-        {#each matches.matches.slice(-3) as mid}
-        {#await req_match(mid) then match}
-        <FeedMatchCard match={match}/>
-        {/await}
-        {/each}
-        {/await}
-        {/each}
+            <h1 class="second"> Partidas de times que você segue: </h1>
+            {#each teams.follows as tid}
+                {#await req_team_matches(tid) then matches}
+                    {#each matches.matches.slice(-3) as mid}
+                        {#await req_match(mid) then match}
+                            <FeedMatchCard match={match}/>
+                        {/await}
+                    {/each}
+                {/await}
+            {/each}
         {/await}
     </div>
     <div class="revs-and-comms-box">

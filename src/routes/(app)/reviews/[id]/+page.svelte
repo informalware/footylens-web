@@ -1,5 +1,5 @@
 <script lang="ts">
-	import TextBox from './../../../lib/components/review/text-box.svelte';
+	import TextBox from '$components/review/text-box.svelte';
 	import MatchScoreboard from '$components/scoreboard/team-goals-display.svelte';
 	import Subtitle from '$lib/components/texts/subtitle.svelte';
 	import { page } from '$app/stores';
