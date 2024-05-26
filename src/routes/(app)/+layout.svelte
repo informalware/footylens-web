@@ -1,14 +1,19 @@
 <script lang="ts">
 	import '../../app.pcss';
+	import { req_user } from '$lib/requests';
 	import Header from '$components/header.svelte';
     import UserAside from '$components/user-aside.svelte';
-    import {data as UserMock} from '$lib/data/mocks/profiles';
+	import type { PageData } from './$types';
+
+	export let data: PageData;
 </script>
 
 <Header />
 
 <div class="body-layout">
-    <UserAside user={ UserMock[1] }/>
+	{#await req_user(data.props.user_session) then user}
+    	<UserAside user={ user }/>
+	{/await}
 	<main>
 		<slot />
 	</main>

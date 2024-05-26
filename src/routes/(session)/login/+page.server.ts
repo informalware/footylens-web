@@ -20,10 +20,10 @@ export const actions: Actions = {
         if (error) {
             return {
                 data: formData,
-                error
+                error: "Email ou senha incorretos."
             }
         }
-
+        
         event.cookies.set("user_session", userid?.toString() || "", {
             path: "/",
             maxAge: 60*60*24, // 1 dia
