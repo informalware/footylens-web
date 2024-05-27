@@ -1,6 +1,6 @@
 <script lang="ts">
-    import { backend_address } from "$lib/consts";
     import { enhance } from '$app/forms';
+    import { page } from '$app/stores';
     import type { ActionData } from './$types';
 
     export let form: ActionData;

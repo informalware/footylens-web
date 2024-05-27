@@ -3,14 +3,17 @@
     import RatingDisplay from '$components/review/rating-display.svelte';
     import AuthorDisplay from '$components/review/author-display.svelte';
     import CommentaryCard from '$components/review/commentary-card.svelte';
-    import FeedMatchCard from '$components/scoreboard/feed-match-card.svelte';
+    import FeedMatchCard from '$components/scoreboard/feed-match-card.svelte'
+    import type { PageData } from './$types';;
 
     import { req_match, req_review, req_user_followers, req_user_follows, req_user_team_follows } from "$lib/requests";
     import { req_user_reviews, req_user_commentaries, req_team_matches } from "$lib/requests";
 
     import { Shield } from "lucide-svelte";	
 
-    let id = Number(1);
+    export let data: PageData;
+
+    let id = Number(data.props.user_session);
 </script>
 
 

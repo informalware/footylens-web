@@ -1,21 +1,16 @@
 <script lang="ts">
     import MatchFeed from "$components/match-feed.svelte";
     import { matches } from "$lib/data/mocks/matches";
-
+    import { page } from '$app/stores';
 	import type { User } from '$lib/data/types';
 
     let user: User | undefined;
 
     let i = 0;
+    let id = Number($page.params.id)
 </script>
 
 
-<!--
-    Página do perfil do usuário
-
-    -> Necessário linkar partidas apenas que usuário participou;
-    -> Necessário linkar amigos do usuário;
--->
 
 <main>
     <div class="profile-header">

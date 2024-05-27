@@ -11,7 +11,7 @@
 <Header />
 
 <div class="body-layout">
-	{#await req_user(data.props.user_session) then user}
+	{#await req_user(Number(data.props.user_session)) then user}
     	<UserAside user={ user }/>
 	{/await}
 	<main>
