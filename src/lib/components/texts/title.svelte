@@ -2,7 +2,7 @@
 export let left: boolean = false;
 </script>
 
-<h1 style={left ? "text-aling: left" : null}><slot /></h1>
+<h1 class={left ? "text-left" : "text-center"}><slot /></h1>
 
 <style>
     h1 {
