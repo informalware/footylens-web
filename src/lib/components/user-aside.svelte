@@ -24,8 +24,8 @@
     </div>
     <div class="peladeiros">
         <span>Seguindo:
-        {#await req_user_followers(user.id) then followers}
-            {followers.followers.length}
+        {#await req_user_follows(user.id) then follows}
+            {follows.follows.length}
         {/await}
         </span>
     </div>

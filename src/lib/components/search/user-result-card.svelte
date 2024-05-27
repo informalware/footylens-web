@@ -1,4 +1,4 @@
-<script lang="ts">
+<lucide-script lang="ts">
 	import CardHeader from '../ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
     import type { User } from "$lib/data/types";

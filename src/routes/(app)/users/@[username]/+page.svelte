@@ -1,23 +1,78 @@
-<script>
+<script lang="ts">
+    import profile from '$assets/logo.png'
+    import type { Review, User } from '$lib/data/types';
     import { page } from '$app/stores';
+    import { req_user_by_username } from '$lib/requests';
+    import { req_user_follows, req_user_followers } from '$lib/requests';
+    import { req_user_reviews, req_review } from '$lib/requests';
 
-    let username = $page.params.username;
+	import AuthorDisplay from "$lib/components/review/author-display.svelte";
+    import RatingDisplay from "$lib/components/review/rating-display.svelte";
+
+    let user = req_user_by_username($page.params.id);
+    let reviews : Review[] = [];
+    let i = 0;
+    let reviewsSize = 0;
+
+    async function loadReviews() {
+        const userReviews = await req_user_reviews(Number($page.params.id));
+        reviewsSize = userReviews.reviews.length;
+
+        for (let j = 0; i < reviewsSize && j < 3 ; i++, j++) {
+            const review = await req_review(userReviews.reviews[i]);
+            reviews = [...reviews, review];
+        }
+    }
+
+    loadReviews();
 </script>
 
 
-<!--
-    Página do perfil do usuário
-
-    -> Necessário linkar partidas apenas que usuário participou;
-    -> Necessário linkar amigos do usuário;
--->
-
+{#await user then user}
 <main>
-    <div class="gap-4 flex flex-col items-center last-matches">
-        <h1>Últimas Reviews</h1>
-        
+    <div class="profile-header">
+        <div class="profile-image">
+            <img src={profile} alt="Imagem do usuário"/>
+        </div>
+        <h1>{user?.display}</h1>
+        <h2>@{user?.username}</h2>
+        <p>{user?.bio}</p>
+        <div class="peladeiros">
+            <span>Seguidores:
+            {#await req_user_followers(user.id) then followers}
+                {followers.followers.length}
+            {/await}
+            </span>
+        </div>
+        <div class="peladeiros">
+            <span>Seguindo:
+            {#await req_user_follows(user.id) then follows}
+                {follows.follows.length}
+            {/await}   
+            </span>   
+        </div>
+    </div>
+    <div class="gap-4 flex flex-col items-left last-matches">
+        <h1>Reviews do usuário:</h1>
+
+        {#each reviews as review (review.id)}
+            <div class="review-container">
+                <AuthorDisplay id={review.userId} date={review.creationDate} />
+                <p>{review.review}</p>
+                <RatingDisplay rating={review.rating} />
+            </div>
+        {/each}
+
+        {#if i < reviewsSize}
+        <div class="container">
+            <button class="Button" on:click={loadReviews}>Carregar mais reviews</button>
+        </div>
+        {:else}
+            <p>Não há mais reviews.</p>
+        {/if}
     </div>
 </main>
+{/await}
 
 
 <style>
@@ -28,9 +83,23 @@
         align-items: left;
         height: 100vh;
     }
+    
+    .profile-image {
+        width: 300px;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
 
     .last-matches {
-        margin-left: 150px;
+        margin-left: 200px;
+    }
+
+    .review-container {
+        background-color: hsl(var(--accent));
+        padding: 13px;
+        border-radius: 12px;
     }
 
     .profile-header {
@@ -69,15 +138,24 @@
         object-fit: cover;
         margin-bottom: 20px;
     }
+
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
     
     .Button {
-        background-color: #1e3147;
+        background-color: hsl(var(--accent));
         color: white;
         padding: 8px 16px;
         border: none;
         border-radius: 4px;
         font-size: 16px;
         cursor: pointer;
+        width: 50%;
+        margin-top: 15px;
+        
     }
 
     .Button:hover {

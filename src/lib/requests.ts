@@ -29,6 +29,12 @@ export async function req_user(id: number): Promise<User> {
     return {...res.data}
 }
 
+export async function req_user_by_username(username: string): Promise<User> {
+    const res = await axios.get(backend_address + `/users/@${username}`);
+
+    return {...res.data}
+}
+
 export async function req_user_reviews(id: number): Promise<{reviews: number[]}> {
     const res = await axios.get(backend_address + `/users/${id}/reviews`);
 
