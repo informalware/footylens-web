@@ -7,6 +7,7 @@
 	import AuthorDisplay from '$components/review/author-display.svelte';
 	import CommentaryCard from '$components/review/commentary-card.svelte';
 	import { req_review, req_match, req_commentaries_from_review } from '$lib/requests';
+    import { post_commentary } from '$lib/requests';
 
     let id = Number($page.params.id)
 </script>

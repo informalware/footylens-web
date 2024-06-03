@@ -1,13 +1,17 @@
 <script lang="ts">
 	import { page } from "$app/stores";
+    import type { Review } from '$lib/data/types';
 	import TeamGoalsDisplay from '$components/scoreboard/team-goals-display.svelte';
     import TextBox from '$components/review/text-box.svelte';
 	import AuthorDisplay from '$components/review/author-display.svelte';
     import EventCard from '$components/scoreboard/event-card.svelte';
     import RatingDisplay from '$components/review/rating-display.svelte';
     import { req_review, req_match_events, req_match_review, req_match } from '$lib/requests';
+    import { post_review } from '$lib/requests';
+    import { backend_address } from "$lib/consts";
 
     let id = Number($page.params.id)
+    let review: Review;
 </script>
 
 <!--
