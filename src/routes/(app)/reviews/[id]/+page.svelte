@@ -8,8 +8,15 @@
 	import CommentaryCard from '$components/review/commentary-card.svelte';
 	import { req_review, req_match, req_commentaries_from_review } from '$lib/requests';
     import { post_commentary } from '$lib/requests';
+    import { backend_address } from "$lib/consts";
+	import type { Commentary } from '$lib/data/types';
+    import type { PageData } from './$types';
 
+    export let data: PageData;
+
+    let user_id = Number(data.props.user_session);
     let id = Number($page.params.id)
+    let commentary: Commentary;
 </script>
 
 {#await req_review(id) then review}
@@ -26,7 +33,13 @@
         <p>{review.review}</p>
         <RatingDisplay rating={review.rating} />
     </div>
-    <TextBox />
+    <form action="{backend_address}/commentaries" method="POST" class="signin-form">
+        <input id="reviewId" type="hidden" value={id} />
+        <input id="userId" type="hidden" value={user_id} />
+        <label for="commentary">Comentário:</label>
+        <textarea id="commentary" bind:value={commentary.commentary} required></textarea>
+        <button type="submit">Postar comentário</button>
+    </form>
     <Subtitle left>Comentários</Subtitle>
     <div class="comments-container">
         {#await req_commentaries_from_review(review.id) then comment_list}
