@@ -9,6 +9,7 @@
 
 
 <div class="match-box">
+    <a href="/matches/{match.id}">
     <div class="grid grid-cols-5">
         {#await req_team(match.home) then team}
         <div class="team">
@@ -17,7 +18,10 @@
         </div>
         <div class="score">
             <div class="left">{match.scoreboard.first}</div>
-            <div style="font-size: 50%;">X<div>{team.league}</div></div>
+            <div style="display: flex; flex-direction: column; align-items: center; font-size: 1.1rem;">
+                <div style="height: 50%; display: flex; align-items: flex-end;">X</div>
+                <div>{team.league}</div>
+            </div>
             <div class="right">{match.scoreboard.second}</div>
         </div>
         {#await req_team(match.away) then team}
@@ -28,17 +32,21 @@
         {/await}
         {/await}
     </div>
+    </a>
 </div>
 
 <style>
     .match-box {
-        width: 600px;
-        height: 15%;
+        min-width: 650px;
+        max-width: 700px;
+        min-height: 200px;
         justify-content: center;
         align-items: center;
         display: flex;
         background-color: hsl(var(--accent));
         border-radius: 25px;
+
+        margin-bottom: 20px;
     }
 
     .grid {
@@ -53,10 +61,10 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        padding: 2rem;
+        padding: 1.5rem;
 
         font-weight: bold;
-        font-size: 1.5em;
+        font-size: 1.25em;
     }
 
     .team-name {

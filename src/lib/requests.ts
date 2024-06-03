@@ -95,3 +95,24 @@ export async function req_user_team_follows(id: number): Promise<{follows: numbe
     return {...res.data}
 }
 
+
+export async function post_user(user: User){
+    await axios.post(backend_address + "/users", user);
+}
+
+export async function update_user(id: number, user: User){
+    await axios.put(backend_address + `/users/${id}`, user);
+}
+
+export async function post_user_follows_team(user_id: number, team_id: number){
+    await axios.post(backend_address + `/users/${user_id}/teams`, {team_id: team_id});
+}
+
+export async function delete_user_unfollows_team(user_id: number, team_id: number){
+    await axios.delete(backend_address + `/users/${user_id}/teams/${team_id}`);
+}
+
+export async function post_user_follows_user(user_id: number, follows_id: number){
+    await axios.post(backend_address + `/users/${user_id}/follows`, {follows_id: follows_id});
+}
+

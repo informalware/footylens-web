@@ -8,26 +8,12 @@
     export let match: Match;
 </script>
 
-<!--
-@component
-
-Card usado para representar uma partida no feed do usuário. O card deve conter informações de:
-- Seus amigos que estão jogando
-- Data/Hora de início
-- Tempo decorrido/fim de jogo
-- Times e placar
-- Estatísticas dos seus amigos
-
--`match: Match` partida com as informações a serem exibidas
--->
-
 <Card.Root>
     <Card.Header>
         <Card.Title>            
             <Timer initial={match.started_at.getTime()} finished={match.finished?.getTime()}/>
         </Card.Title>
         <Card.Description>
-            {match.started_at.toLocaleDateString()} {match.started_at.toLocaleTimeString()}
         </Card.Description>
     </Card.Header>
     <Card.Content>
