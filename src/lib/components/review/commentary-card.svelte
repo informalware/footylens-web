@@ -7,7 +7,9 @@
 
 <div>
     {#await req_commentary(id) then commentary}
+        <a href="/reviews/{commentary.reviewId}">
         <AuthorDisplay id={commentary.userId} date={commentary.creationDate}/>
         <p>{commentary.commentary}</p>
+    </a>
     {/await}
 </div>

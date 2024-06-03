@@ -50,11 +50,11 @@
         {/each}
         {/await}
         </div>
+        <h1 class="second"> Comentários de quem você segue: </h1>
         <div class="comms-box">
-            <h1 class="second"> Comentários de quem você segue: </h1>
             {#await req_user_commentaries(uid) then commentaries}
             {#each commentaries.commentaries.slice(-3) as cid}
-            <CommentaryCard id={cid} />
+                <CommentaryCard id={cid} />
             {/each}
             {/await}
         </div>
