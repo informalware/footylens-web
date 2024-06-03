@@ -1,8 +1,6 @@
 import axios from "axios";
 import { backend_address } from "./consts";
-import type { Commentary, Review } from "./data/types";
-import type { Team, Match, Event } from "./data/types";
-import type { User } from "lucide-svelte";
+import type { Team, Match, Event, User, Commentary, Review, UserRegistry } from "./data/types";
 
 
 export async function req_commentary(id: number): Promise<Commentary> {
@@ -102,7 +100,7 @@ export async function req_user_team_follows(id: number): Promise<{follows: numbe
 }
 
 
-export async function post_user(user: User){
+export async function post_user(user: UserRegistry){
     await axios.post(backend_address + "/users", user);
 }
 
@@ -120,5 +118,9 @@ export async function delete_user_unfollows_team(user_id: number, team_id: numbe
 
 export async function post_user_follows_user(user_id: number, follows_id: number){
     await axios.post(backend_address + `/users/${user_id}/follows`, {follows_id: follows_id});
+}
+
+export async function delete_user_unfollows_user(user_id: number, follows_id: number){
+    await axios.delete(backend_address + `/users/${user_id}/follows/${follows_id}`);
 }
 

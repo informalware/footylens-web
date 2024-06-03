@@ -10,6 +10,13 @@ export type User = {
     email: string;
 }
 
+export type UserRegistry = {
+    display: string;
+    username: string;
+    email: string;
+    password: string;
+}
+
 export type Scoreboard = {
     first: number,
     second: number
