@@ -1,21 +1,27 @@
 <script lang="ts">
+	import { type User } from '$lib/data/types';
+	import { backend_address } from '$lib/consts';
+	import axios from 'axios';
     import profile from '$assets/logo.png'
-    import type { Review, User } from '$lib/data/types';
+    import type { Review } from '$lib/data/types';
     import { page } from '$app/stores';
-    import { req_user_by_username } from '$lib/requests';
+    import { req_user } from '$lib/requests';
     import { req_user_follows, req_user_followers } from '$lib/requests';
     import { req_user_reviews, req_review } from '$lib/requests';
+    import { User as UserIcon } from 'lucide-svelte';
 
 	import AuthorDisplay from "$lib/components/review/author-display.svelte";
     import RatingDisplay from "$lib/components/review/rating-display.svelte";
+	import { onMount } from 'svelte';
+	import { users } from '$lib/data/mocks/users';
 
-    let user = req_user_by_username($page.params.id);
+    let user = axios.get(backend_address + `/users/@${$page.params.username}`).then(res => res.data as User);
     let reviews : Review[] = [];
     let i = 0;
     let reviewsSize = 0;
 
-    async function loadReviews() {
-        const userReviews = await req_user_reviews(Number($page.params.id));
+    async function loadReviews(id: number ) {
+        const userReviews = await req_user_reviews(id);
         reviewsSize = userReviews.reviews.length;
 
         for (let j = 0; i < reviewsSize && j < 3 ; i++, j++) {
@@ -24,7 +30,10 @@
         }
     }
 
-    loadReviews();
+    onMount(async () => {
+        const id = (await user).id;
+        await loadReviews(id);
+    });
 </script>
 
 
@@ -39,15 +48,15 @@
         <p>{user?.bio}</p>
         <div class="peladeiros">
             <span>Seguidores:
-            {#await req_user_followers(user.id) then followers}
-                {followers.followers.length}
+            {#await req_user_followers(user.id) then {followers}}
+                {followers.length}
             {/await}
             </span>
         </div>
         <div class="peladeiros">
             <span>Seguindo:
-            {#await req_user_follows(user.id) then follows}
-                {follows.follows.length}
+            {#await req_user_follows(user.id) then {follows}}
+                {follows.length}
             {/await}   
             </span>   
         </div>
@@ -65,7 +74,7 @@
 
         {#if i < reviewsSize}
         <div class="container">
-            <button class="Button" on:click={loadReviews}>Carregar mais reviews</button>
+            <button class="Button" on:click={() => loadReviews(user.id)}>Carregar mais reviews</button>
         </div>
         {:else}
             <p>Não há mais reviews.</p>
