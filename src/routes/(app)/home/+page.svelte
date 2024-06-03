@@ -77,7 +77,15 @@
     }
 
     .matches-box {
-        max-width: 500px;
+        max-width: 50%;
+        max-height: 1200px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 38px;
+    }
+
+    .revs-and-comms-box {
+        max-width: 50%;
         display: flex;
         flex-wrap: wrap;
         gap: 38px;
