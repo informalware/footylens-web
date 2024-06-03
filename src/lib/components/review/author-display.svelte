@@ -9,13 +9,13 @@
     export let date: string | undefined;
     $: formatted_date = stringToDate(date);
 
-    function navigateToUserProfile(username: string) {
-        goto(`/users/@${username}`);
+    function navigateToUserProfile(user_id: Number) {
+        goto(`/users/${user_id}`);
     }
 </script>
 
 {#await req_user(id) then user}
-<div role="button" tabindex="0" aria-label="View user profile" on:click={() => navigateToUserProfile(user.username)} on:keydown={() => navigateToUserProfile(user.username)}>
+<div role="button" tabindex="0" aria-label="View user profile" on:click={() => navigateToUserProfile(user.id)} on:keydown={() => navigateToUserProfile(user.username)}>
     <Subtitle left><UserIcon class="inline"/> {user.display}</Subtitle>
         {#if formatted_date}
         <p>{formatted_date}</p>
