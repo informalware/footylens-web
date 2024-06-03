@@ -4,6 +4,7 @@ import type { Commentary, Review } from "./data/types";
 import type { Team, Match, Event } from "./data/types";
 import type { User } from "lucide-svelte";
 
+
 export async function req_commentary(id: number): Promise<Commentary> {
     const res = await axios.get(backend_address + `/commentaries/${id}`);
 
@@ -24,6 +25,12 @@ export async function req_review(id: number): Promise<Review> {
 
 export async function req_user(id: number): Promise<User> {
     const res = await axios.get(backend_address + `/users/${id}`);
+
+    return {...res.data}
+}
+
+export async function req_user_by_username(username: string): Promise<User> {
+    const res = await axios.get(backend_address + `/users/@${username}`);
 
     return {...res.data}
 }
@@ -88,8 +95,30 @@ export async function req_user_follows(id: number): Promise<{follows: number[]}>
     return {...res.data}
 }
 
-export async function req_user_team_follows(id: number): Promise<{teams: number[]}>{
+export async function req_user_team_follows(id: number): Promise<{follows: number[]}>{
     const res = await axios.get(backend_address + `/users/${id}/teams`);
 
     return {...res.data}
 }
+
+
+export async function post_user(user: User){
+    await axios.post(backend_address + "/users", user);
+}
+
+export async function update_user(id: number, user: User){
+    await axios.put(backend_address + `/users/${id}`, user);
+}
+
+export async function post_user_follows_team(user_id: number, team_id: number){
+    await axios.post(backend_address + `/users/${user_id}/teams`, {team_id: team_id});
+}
+
+export async function delete_user_unfollows_team(user_id: number, team_id: number){
+    await axios.delete(backend_address + `/users/${user_id}/teams/${team_id}`);
+}
+
+export async function post_user_follows_user(user_id: number, follows_id: number){
+    await axios.post(backend_address + `/users/${user_id}/follows`, {follows_id: follows_id});
+}
+

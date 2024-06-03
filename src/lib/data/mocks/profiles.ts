@@ -3,37 +3,37 @@ import type { User } from "../types";
 export const data: User[] = [
     {
         id: 1,
-        name: "Thiago Duvanel",
+        display: "Thiago Duvanel",
         bio: "Calvo",
-        at: "th-duvanel",
+        username: "th-duvanel",
         email: "thiago.duvanel@usp.br",
     },
     {
         id: 2,
-        name: "John Doe",
+        display: "John Doe",
         bio: "Lorem ipsum",
-        at: "john-doe",
+        username: "john-doe",
         email: "john.doe@example.com",
     },
     {
         id: 3,
-        name: "Jane Smith",
+        display: "Jane Smith",
         bio: "Dolor sit amet",
-        at: "jane-smith",
+        username: "jane-smith",
         email: "jane.smith@example.com",
     },
     {
         id: 4,
-        name: "Alex Johnson",
+        display: "Alex Johnson",
         bio: "Consectetur adipiscing elit",
-        at: "alex-johnson",
+        username: "alex-johnson",
         email: "alex.johnson@example.com",
     },
     {
         id: 5,
-        name: "Harrisonn Thomes",
+        display: "Harrisonn Thomes",
         bio: "ah n sei oq n sei q la",
-        at: "ojarrisonn",
+        username: "ojarrisonn",
         email: "ojarrisonn@gmail.com",
     }
 ]

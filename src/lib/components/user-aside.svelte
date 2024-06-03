@@ -1,5 +1,6 @@
 <script lang="ts">
-    import profile from '$assets/logo.png';
+    import profile from '$assets/logo.png'
+    import { req_user_follows, req_user_followers } from '$lib/requests';
     import type { User } from "$lib/data/types";
 
     export let user: User;
@@ -15,10 +16,18 @@
     <h2>@{user.username}</h2>
     <p>{user.bio}</p>
     <div class="peladeiros">
-        <span>Seguidores:</span>
+        <span>Seguidores:
+        {#await req_user_followers(user.id) then followers}
+            {followers.followers.length}
+        {/await}
+        </span>
     </div>
     <div class="peladeiros">
-        <span>Seguindo:</span>
+        <span>Seguindo:
+        {#await req_user_follows(user.id) then follows}
+            {follows.follows.length}
+        {/await}
+        </span>
     </div>
     <div>
         <button class="Button">Editar perfil</button>

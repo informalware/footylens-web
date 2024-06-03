@@ -21,7 +21,7 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
 
 <header class="">
     <a href="/home">
-        <img src={logo}>
+        <img src={logo} alt="Imagem do Usuário">
     </a>
 
     {#each pages as { page, button }}

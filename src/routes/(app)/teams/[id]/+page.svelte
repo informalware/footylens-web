@@ -1,12 +1,17 @@
-<script>
-    import { Shield } from "lucide-svelte";
+<script lang="ts">
+    import type { PageData } from './$types';
 
-    import MatchCard from '$lib/components/match-card.svelte';
+    import FeedMatchCard from '$components/scoreboard/feed-match-card.svelte';
 
     import { req_team, req_team_matches, req_match, req_team_followers } from '$lib/requests';
+    import { post_user_follows_team, delete_user_unfollows_team } from '$lib/requests';
     import { page } from '$app/stores';
+    import { Shield } from "lucide-svelte";
+
+    export let data: PageData;
 
     let id = Number($page.params.id)
+    let user_id = Number(data.props.user_session)
 </script>
 
 
@@ -15,7 +20,13 @@
         <Shield size={128}/>
         <h1>
             {team.name}
-            <button class="Button">Seguir time</button>
+            {#await req_team_followers(id) then followers}
+            {#if followers.followers.includes(user_id)}
+            <button class="Button active" on:click={async () => { await delete_user_unfollows_team(user_id, id); }}>Deixar de seguir</button>
+        {:else}
+            <button class="Button" on:click={async () => { await post_user_follows_team(user_id, id); }}>Seguir time</button>
+        {/if}
+            {/await}
             <h2>
                 {team.league}
             </h2>
@@ -31,7 +42,7 @@
         {#await req_team_matches(id) then match_list}
         {#each match_list.matches as mid}
         {#await req_match(mid) then match}
-        <MatchCard {match}/>
+            <FeedMatchCard match={match}/>
         {/await}
         {/each}
         {/await}
@@ -80,14 +91,18 @@
         border-radius: 4px;
         font-size: 16px;
         cursor: pointer;
+        min-width: 150px;
+
 
         position: relative;
-        top: -0.25em;
-        margin-left: 2em;
         margin-bottom: 1em;
     }
 
     .Button:hover {
+        background-color: #0d2035;
+    }
+
+    .Button:active {
         background-color: #0d2035;
     }
 </style>
