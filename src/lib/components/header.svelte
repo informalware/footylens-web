@@ -1,34 +1,21 @@
-<script lang="ts">
-	import Title from "$lib/components/texts/title.svelte";
-	import Button from "$lib/components/ui/button/button.svelte";
+<script>
     import logo from '$assets/nome_branco.png'
-    import { ToTitle } from "$lib/str_utils";
-
     import "/src/app.pcss";
 
-    const pages = [
-        { page: 'matches', button: 'Partidas' },
-        { page: 'users', button: 'Usuários' },
-        { page: 'search', button: 'Pesquisar' }
-    ];
+    import { Search } from "lucide-svelte";
 </script>
-
-<!--
-@component
-
-Componente de cabeçalho que é usado por todo o site, sendo a barra superior do site
--->
 
 <header class="">
     <a href="/home">
-        <img src={logo} alt="Imagem do Usuário">
+        <img src={logo} alt="Logo do site">
     </a>
 
-    {#each pages as { page, button }}
-    <Button href="/{page}" variant="secondary" size="lg" class="big-bold">{button}</Button>
-    {/each}
-</header>
+    <div class="spacer"></div>
 
+    <a href="/search" class="big-bold">
+        <Search size={24}/>
+    </a>
+</header>
 
 <style>
     header {
@@ -36,11 +23,16 @@ Componente de cabeçalho que é usado por todo o site, sendo a barra superior do
         flex-direction: row;
         gap: 2rem;
         padding: 1rem;
+        padding-right: 2rem; /* ajuste este valor conforme necessário */
         background-color: hsl(var(--accent));
         align-items: center;
     }
 
     img {
         width: 22rem;
+    }
+
+    .spacer {
+        flex-grow: 1;
     }
 </style>

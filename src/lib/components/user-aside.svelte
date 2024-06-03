@@ -30,20 +30,13 @@
         </span>
     </div>
     <div>
-        <button class="Button">Editar perfil</button>
+        <a href="/users/edit">
+            <button class="Button">Editar perfil</button>
+        </a>
     </div>
 </div>
 
 <style>
-    body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        padding: 0;
-    }
-
     .profile-header {
         display: flex;
         flex-direction: column;

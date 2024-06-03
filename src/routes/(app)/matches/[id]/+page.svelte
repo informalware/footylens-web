@@ -58,17 +58,6 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         flex-wrap: wrap;
     }
 
-    .gols {
-        max-width: 500px;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 38px;
-    }
-
-    .gols > * {
-        flex: 1 0 50%;
-    }
-
     .reviews-box {
         margin-top: 1.5rem;
         margin-left: 2rem;

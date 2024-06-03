@@ -4,8 +4,10 @@
 
 <form action="{backend_address}/signin" method="POST" class="signin-form">
     <h2>Cadastro:</h2>
-    <label for="username">Nome de usuário:</label>
+    <label for="username">Sua @peladaTag:</label>
     <input id="username" type="text" name="username" required />
+    <label for="display">Nome de usuário:</label>
+    <input id="display" type="text" name="display" required />
     <label for="password">Senha:</label>
     <input id="password" type="password" name="password" required />
     <label for="email">Email:</label>
