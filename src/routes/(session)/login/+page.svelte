@@ -1,6 +1,7 @@
 <script lang="ts">
     import { enhance } from '$app/forms';
     import { page } from '$app/stores';
+	import { stringify } from 'postcss';
     import type { ActionData } from './$types';
 
     export let form: ActionData;
@@ -13,17 +14,16 @@
         <input id="email" type="email" name="email" required />
         <label for="password">Senha:</label>
         <input id="password" type="password" name="password" required />
+        {#if form?.error}
+          <p class="text-red-500">Falha ao fazer login</p>
+          <p>{form?.error}</p>
+        {/if}
         <button type="submit">Login</button>
         <a href="/signin">
             <button>Criar conta</button>
         </a>
     </form>
 
-    {#if form?.error}
-      <div class="notice error">
-        {form.error}
-      </div>
-    {/if}
 </section>
 
 
