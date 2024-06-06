@@ -1,6 +1,6 @@
 import { redirect } from "@sveltejs/kit";
 
-export function load({ cookies, params }) {
+export function load({ cookies }) {
   const user_session = cookies.get('user_session');
 
   if (!user_session) {
@@ -9,6 +9,6 @@ export function load({ cookies, params }) {
 
   return {
     status: 200,
-    props: { user_session, params }
+    props: { user_session }
   };
 }
