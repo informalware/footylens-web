@@ -1,10 +1,10 @@
-<lucide-script lang="ts">
+<script lang="ts">
 	import CardHeader from '../ui/card/card-header.svelte';
 	import Card from "$components/ui/card/card.svelte";
     import type { User } from "$lib/data/types";
 	import CardTitle from '$components/ui/card/card-title.svelte';
 	import CardDescription from '$components/ui/card/card-description.svelte';
-	import { User as Icon } from 'lucide-svelte';
+	import { User as UserIcon } from 'lucide-svelte';
     import "../../../app.pcss";
     import { goto } from '$app/navigation';
 	import axios from 'axios';

@@ -19,7 +19,7 @@
           <p>{form?.error}</p>
         {/if}
         <button type="submit">Login</button>
-        <a href="/signin">
+        <a href="/signup">
             <button>Criar conta</button>
         </a>
     </form>

@@ -2,16 +2,16 @@
     import { backend_address } from "$lib/consts";
 </script>
 
-<form action="{backend_address}/signin" method="POST" class="signin-form">
+<form method="POST" class="signin-form">
     <h2>Cadastro:</h2>
-    <label for="username">Sua @peladaTag:</label>
-    <input id="username" type="text" name="username" required />
-    <label for="display">Nome de usuário:</label>
-    <input id="display" type="text" name="display" required />
+    <label for="username">Nome de Usuário:</label>
+    <input id="username" type="text" name="username" placeholder="@username" required />
+    <label for="display">Nome de Exibição:</label>
+    <input id="display" type="text" name="display" placeholder="User" required />
     <label for="password">Senha:</label>
-    <input id="password" type="password" name="password" required />
+    <input id="password" type="password" name="password" placeholder="password" required />
     <label for="email">Email:</label>
-    <input id="email" type="email" name="email" required />
+    <input id="email" type="email" name="email" placeholder="rei.pele@footylens.com" required />
     <button type="submit">Cadastrar</button>
 </form>
 
