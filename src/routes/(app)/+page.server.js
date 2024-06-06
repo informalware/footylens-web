@@ -5,10 +5,7 @@ export function load({ cookies }) {
 
   if (!user_session) {
     throw redirect(302, '/login');
+  } else {
+    throw redirect(302, '/home');
   }
-
-  return {
-    status: 200,
-    props: { user_session }
-  };
 }
