@@ -40,17 +40,21 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
                 <Textarea name="review" placeholder="Escreva sua review..." style="margin-bottom: 0.5rem;"></Textarea>
                 <Button variant="secondary" type="submit" class="self-start">Publicar</Button>
             </form>
-            {#await req_match_review(id) then review_list}
-            {#each review_list.reviews.slice(-3) as rid}
-            {#await req_review(rid) then review}
-            <div class="review-container">
-                <AuthorDisplay id={review.userId} date={review.creationDate} />
-                <p>{review.review}</p>
-                <RatingDisplay rating={review.rating} />
+            <div class="gap-4 flex flex-col items-left" style="margin-top: 0.5rem;">
+                {#await req_match_review(id) then review_list}
+                {#each review_list.reviews.slice(-3) as rid}
+                    {#await req_review(rid) then review}
+                    <a href={`/reviews/${rid}`}>
+                        <div class="review-container">
+                            <AuthorDisplay id={review.userId} date={review.creationDate} />
+                                <p>{review.review}</p>
+                            <RatingDisplay rating={review.rating} />
+                        </div>
+                    </a>
+                    {/await}
+                {/each}
+                {/await}
             </div>
-            {/await}
-            {/each}
-            {/await}
         </div>
     </div>
 {/await}
@@ -104,12 +108,14 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
     }
 
     .review-container {
-        margin-top: 1rem;
-        padding: 1rem;
-        border: 1px solid hsl(0, 0%, 80%);
-        border-radius: 5px;
+        background-color: hsl(var(--accent));
+        padding: 13px;
+        border-radius: 12px;
     }
 
+    .last-matches {
+        margin-left: 200px;
+    }
 
     .title {
         font-size: 1.5rem;
