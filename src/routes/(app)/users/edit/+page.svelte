@@ -1,9 +1,12 @@
 <script lang="ts">
+    import { enhance } from '$app/forms';
     import profile from '$assets/logo.png'
     import { req_user, update_user } from '$lib/requests';
     import type { PageData } from '../../$types';
     import type { User } from "$lib/data/types";
     import { backend_address } from "$lib/consts";
+    import Button from "$components/ui/button/button.svelte";
+    
 
     export let data: PageData;
 
@@ -14,15 +17,15 @@
 <main>
     <div class="form-box">
     {#await req_user(user_id) then user}
-    <form action="{backend_address}/users/{user_id}" method="UPDATE" class="update-form">
-        <h2>Edite seu perfil:</h2>
+    <h2>Edite seu perfil:</h2>
+    <form method="PATCH">
         <label for="display">Nome de usuário:</label>
-        <input id="display" type="text" name="display" class="user-info"/>
+        <input name="display" class="user-info"/>
         <label for="email">Email:</label>
-        <input id="email" type="email" name="email" class="user-info"/>
+        <input name="email" class="user-info"/>
         <label for="bio">Descrição:</label>
-        <textarea id="bio" name="bio" class="description"></textarea>
-        <button type="submit">Postar edição</button>
+        <textarea name="bio" class="description"></textarea>
+        <Button variant="secondary" type="submit" class="self-start">Editar perfil</Button>
     </form>
     {/await}
     </div>
