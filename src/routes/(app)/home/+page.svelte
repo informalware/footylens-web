@@ -68,7 +68,7 @@
 
 <style>
     .feed-box {
-        max-width: 1440px;
+        max-width: 1340px;
         display: flex;
         justify-content: space-between;
 
@@ -91,7 +91,7 @@
     }
 
     .revs-and-comms-box {
-        max-width: 700px;
+        max-width: 600px;
     }
 
     .matches-box > * {
@@ -99,12 +99,11 @@
     }
 
     .reviews-box {
-        margin-top: 3rem;
+        margin-top: 1.5rem;
         flex: 1 1 500px;
     }
 
     .comms-box {
-        margin-top: 1.5rem;
         flex: 1 1 500px;
     }
 

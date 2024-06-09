@@ -38,6 +38,7 @@
 <style>
     .match-box {
         width: 700px;
+        min-width: 600px;
         min-height: 200px;
         justify-content: center;
         align-items: center;
