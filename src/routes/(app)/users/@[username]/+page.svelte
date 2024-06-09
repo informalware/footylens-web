@@ -65,11 +65,13 @@
         <h1>Reviews do usuário:</h1>
 
         {#each reviews as review (review.id)}
+            <a href={`/reviews/${review.id}`}>
             <div class="review-container">
                 <AuthorDisplay id={review.userId} date={review.creationDate} />
                 <p>{review.review}</p>
                 <RatingDisplay rating={review.rating} />
             </div>
+            </a>
         {/each}
 
         {#if i < reviewsSize}
