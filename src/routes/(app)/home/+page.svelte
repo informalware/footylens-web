@@ -68,10 +68,9 @@
 
 <style>
     .feed-box {
-        width: 100%;
+        max-width: 1440px;
         display: flex;
         justify-content: space-between;
-        max-width: 1250px;
 
         flex-wrap: wrap;
     }
