@@ -31,6 +31,11 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
     <div class="match-block">
         <div class="gols">
             <TeamGoalsDisplay match={match}/>
+            {#await req_match_events(id) then match_events}
+            {#each match_events.events as event}
+                <EventCard event={event}/>
+            {/each}
+            {/await}
         </div>
 
         <div class="reviews-box">
@@ -88,7 +93,7 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         width: 100%;
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: flex-start;
         max-width: 1200px;
 
         flex-wrap: wrap;
