@@ -53,7 +53,7 @@
             </span>   
         </div>
     </div>
-    <div class="gap-4 flex flex-col items-left last-matches">
+    <div class="gap-4 flex flex-col items-left last-matches" style="flex-grow: 1;">
         <h1>Reviews do usuário:</h1>
 
         {#each reviews as review (review.id)}
