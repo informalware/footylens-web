@@ -13,7 +13,6 @@
 	import AuthorDisplay from "$lib/components/review/author-display.svelte";
     import RatingDisplay from "$lib/components/review/rating-display.svelte";
 	import { onMount } from 'svelte';
-	import { users } from '$lib/data/mocks/users';
 
     let user = axios.get(backend_address + `/users/@${$page.params.username}`).then(res => res.data as User);
     let reviews : Review[] = [];
@@ -61,7 +60,7 @@
             </span>   
         </div>
     </div>
-    <div class="gap-4 flex flex-col items-left last-matches">
+    <div class="gap-4 flex flex-col items-left last-matches" style="flex-grow: 1;">
         <h1>Reviews do usuário:</h1>
 
         {#each reviews as review (review.id)}

@@ -10,7 +10,9 @@
 
 <div class="profile-header">
     <div class="image-container">
-        <img class="profile-image" src={profile} alt="Imagem do Usuário" />
+        <a href={`/users/${user.id}`}>
+            <img class="profile-image" src={profile} alt="Imagem do Usuário" />
+        </a>
     </div>
     <h1>{user.display}</h1>
     <h2>@{user.username}</h2>
