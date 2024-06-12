@@ -62,7 +62,7 @@
         padding: 5px 20px;
         border: none;
         border-radius: 4px;
-        margin-top: 20px;
+        margin-top: 50px;
         font-size: 16px;
         cursor: pointer;
     }
