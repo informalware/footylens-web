@@ -44,7 +44,7 @@
 
     .centered-square {
         width: 500px;
-        height: 500px;
+        height: 580px;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
