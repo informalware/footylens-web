@@ -65,12 +65,14 @@
             </span>   
         </div>
         {#await req_user_followers(id) then {followers}}
-        {#if followers.includes(user_id)}
-            <button class="Button active" on:click={async () => { await delete_user_unfollows_user(user_id, id) }}>Deixar de seguir</button>
-        {:else}
-            <button class="Button" on:click={async () => { await post_user_follows_user(user_id, id) }}>Seguir</button>
-        {/if}
-    {/await}
+            {#if user_id != id}
+                {#if followers.includes(user_id)}
+                    <button class="Button active" on:click={async () => { await delete_user_unfollows_user(user_id, id) }}>Deixar de seguir</button>
+                {:else}
+                    <button class="Button" on:click={async () => { await post_user_follows_user(user_id, id) }}>Seguir</button>
+                {/if}
+            {/if}
+        {/await}
     </div>
     <div class="gap-4 flex flex-col items-left last-matches" style="flex-grow: 1;">
         <h1>Reviews do usuário:</h1>
