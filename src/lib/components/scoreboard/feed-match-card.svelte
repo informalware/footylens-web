@@ -37,8 +37,8 @@
 
 <style>
     .match-box {
-        min-width: 650px;
-        max-width: 700px;
+        width: 700px;
+        min-width: 600px;
         min-height: 200px;
         justify-content: center;
         align-items: center;
@@ -55,16 +55,6 @@
         gap: 1rem;
         align-items: center;
         justify-content: center;
-    }
-
-    .team {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem;
-
-        font-weight: bold;
-        font-size: 1.25em;
     }
 
     .team-name {

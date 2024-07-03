@@ -10,8 +10,8 @@
 
     export let data: PageData;
 
-    let id = Number($page.params.id)
-    let user_id = Number(data.props.user_session)
+    let id = Number($page.params.id);
+    let user_id = Number(data.props.user_session);
 </script>
 
 
@@ -20,20 +20,20 @@
         <Shield size={128}/>
         <h1>
             {team.name}
-            {#await req_team_followers(id) then followers}
-            {#if followers.followers.includes(user_id)}
-            <button class="Button active" on:click={async () => { await delete_user_unfollows_team(user_id, id); }}>Deixar de seguir</button>
-        {:else}
-            <button class="Button" on:click={async () => { await post_user_follows_team(user_id, id); }}>Seguir time</button>
-        {/if}
+            {#await req_team_followers(id) then {followers}}
+                {#if followers.includes(user_id)}
+                    <button class="Button active" on:click={async () => { await delete_user_unfollows_team(user_id, id) }}>Deixar de seguir</button>
+                {:else}
+                    <button class="Button" on:click={async () => { await post_user_follows_team(user_id, id) }}>Seguir time</button>
+                {/if}
             {/await}
             <h2>
                 {team.league}
             </h2>
             <h3>
                 Seguidores: 
-                {#await req_team_followers(id) then followers}
-                    {followers.followers.length}
+                {#await req_team_followers(id) then {followers}}
+                    {followers.length}
                 {/await}
             </h3>
         </h1>

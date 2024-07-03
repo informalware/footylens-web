@@ -14,20 +14,22 @@ export const actions: Actions = {
         }
 
         const { email, password } = formData as { email: string, password: string };
-        const res = await axios.post(backend_address + "/login", {email, password});
-        const { error, userid } = res.data as { error: string | undefined, userid: string | undefined };
 
-        if (error) {
+        try {
+            const res = await axios.post(backend_address + "/login", {email, password});
+            const { userid } = res.data as { error: string | undefined, userid: string | undefined };
+            
+            event.cookies.set("user_session", userid?.toString() || "", {
+                path: "/",
+                maxAge: 60*60*24, // 1 dia
+            });
+            
+        } catch (e) {
             return {
                 data: formData,
-                error: "Email ou senha incorretos."
+                error: `Erro ao tentar fazer login.`
             }
         }
-        
-        event.cookies.set("user_session", userid?.toString() || "", {
-            path: "/",
-            maxAge: 60*60*24, // 1 dia
-        });
 
         throw redirect(302, "/home");
     }

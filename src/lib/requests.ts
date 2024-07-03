@@ -124,3 +124,10 @@ export async function delete_user_unfollows_user(user_id: number, follows_id: nu
     await axios.delete(backend_address + `/users/${user_id}/follows/${follows_id}`);
 }
 
+export async function post_review(review: Review){
+    await axios.post(backend_address + "/reviews", review);
+}
+
+export async function post_commentary(commentary: Commentary){
+    await axios.post(backend_address + "/commentaries", commentary);
+}

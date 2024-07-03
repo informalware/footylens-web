@@ -5,7 +5,7 @@
     import { Search } from "lucide-svelte";
 </script>
 
-<header class="">
+<header>
     <a href="/home">
         <img src={logo} alt="Logo do site">
     </a>

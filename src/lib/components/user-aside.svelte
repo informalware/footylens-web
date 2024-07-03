@@ -1,6 +1,6 @@
 <script lang="ts">
     import profile from '$assets/logo.png'
-    import { req_user_follows, req_user_followers } from '$lib/requests';
+    import { req_user_follows, req_user_followers, req_user_team_follows } from '$lib/requests';
     import type { User } from "$lib/data/types";
 
     export let user: User;
@@ -10,7 +10,9 @@
 
 <div class="profile-header">
     <div class="image-container">
-        <img class="profile-image" src={profile} alt="Imagem do Usuário" />
+        <a href={`/users/${user.id}`}>
+            <img class="profile-image" src={profile} alt="Imagem do Usuário" />
+        </a>
     </div>
     <h1>{user.display}</h1>
     <h2>@{user.username}</h2>
@@ -29,10 +31,12 @@
         {/await}
         </span>
     </div>
-    <div>
-        <a href="/users/edit">
-            <button class="Button">Editar perfil</button>
-        </a>
+    <div class="peladeiros">
+        <span>Times seguidos:
+        {#await req_user_team_follows(user.id) then team_follows}
+            {team_follows.follows.length}
+        {/await}
+        </span>
     </div>
 </div>
 
@@ -75,21 +79,6 @@
         margin-bottom: 20px;
     }
 
-    
-    .Button {
-        background-color: #06102c;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .Button:hover {
-        background-color: #0d2035;
-    }
-
     .peladeiros{
         display: flex;
         align-items: left;
@@ -97,7 +86,6 @@
     }
 
     .peladeiros span {
-        
         font-size: 16px;
         font-weight: bold;
         margin-right: 5px;
