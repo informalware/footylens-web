@@ -38,11 +38,6 @@
         {/await}
         </span>
     </div>
-    <div>
-        <a href="/users/edit">
-            <button class="Button">Editar perfil</button>
-        </a>
-    </div>
 </div>
 
 <style>
@@ -84,21 +79,6 @@
         margin-bottom: 20px;
     }
 
-    
-    .Button {
-        background-color: #06102c;
-        color: white;
-        padding: 8px 16px;
-        border: none;
-        border-radius: 4px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-
-    .Button:hover {
-        background-color: #0d2035;
-    }
-
     .peladeiros{
         display: flex;
         align-items: left;
@@ -106,7 +86,6 @@
     }
 
     .peladeiros span {
-        
         font-size: 16px;
         font-weight: bold;
         margin-right: 5px;
