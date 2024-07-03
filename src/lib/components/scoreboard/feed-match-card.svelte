@@ -57,16 +57,6 @@
         justify-content: center;
     }
 
-    .team {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 1.5rem;
-
-        font-weight: bold;
-        font-size: 1.25em;
-    }
-
     .team-name {
         text-align: center;
     }

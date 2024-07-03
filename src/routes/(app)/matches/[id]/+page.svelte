@@ -11,13 +11,9 @@
     import { req_review, req_match_events, req_match_review, req_match } from '$lib/requests';
     import { post_review } from '$lib/requests';
     import { backend_address } from "$lib/consts";
-	import type { PageData } from "./$types";
 	import Button from "$components/ui/button/button.svelte";
-    
-    export let data: PageData;
 
     let id = Number($page.params.id)
-    let review: Review;
 </script>
 
 <!--
@@ -66,29 +62,6 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
 
 
 <style>
-    #review {
-        width: 100%;
-        padding: 2rem;
-        border-radius: 0.5rem;
-        background-color: hsl(var(--accent));
-    }
-
-    .rating {
-        display: inline-flex;
-        direction: rtl;
-    }
-    .rating input {
-        display: none;
-    }
-    .rating label {
-        font-size: 2em;
-        color: gray;
-        cursor: pointer;
-    }
-    .rating input:checked ~ label {
-        color: gold;
-    }
-
     .match-block {
         width: 100%;
         display: flex;
@@ -116,10 +89,6 @@ Página para exibição de dados de uma partida especificada pela rota dinâmica
         background-color: hsl(var(--accent));
         padding: 13px;
         border-radius: 12px;
-    }
-
-    .last-matches {
-        margin-left: 200px;
     }
 
     .title {

@@ -76,20 +76,4 @@
         color: black;
         background-color: #f8f9fa;
     }
-
-    button {
-        width: 10rem;
-        padding: 0.5rem 1rem;
-        font-size: 1rem;
-        background-color: #007bff;
-        color: white;
-        border: none;
-        cursor: pointer;
-        margin-top: 1rem;
-        border-radius: 10px;
-    }
-
-    button:hover {
-        background-color: #0056b3;
-    }
 </style>

@@ -148,13 +148,6 @@
         margin-bottom: 20px;
     }
 
-    .team {
-        width: 30px;
-        height: 30px;
-        object-fit: cover;
-        margin-bottom: 20px;
-    }
-
     .container {
         display: flex;
         justify-content: center;
